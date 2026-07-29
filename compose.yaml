@@ -1,0 +1,34 @@
+name: scanner-inbox
+
+services:
+  es60w-listener:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: scanner-inbox:local
+    container_name: scanner-inbox
+    network_mode: host
+    restart: unless-stopped
+    init: true
+    user: "${PUID:-10001}:${PGID:-10001}"
+    env_file:
+      - path: ${ES60W_ENV_FILE:-config/es60w-listener.env.example}
+        required: true
+    environment:
+      RAW_SCAN: /data/raw
+      ES60W_SCANNER_IP: ${ES60W_SCANNER_IP:-192.168.6.134}
+      ES60W_LOCAL_IP: ${ES60W_LOCAL_IP:-0.0.0.0}
+      ES60W_LOG_FILE: ""
+      ES60W_LOG_LEVEL: ${ES60W_LOG_LEVEL:-INFO}
+    volumes:
+      - type: bind
+        source: ${RAW_SCAN_HOST:-./output}
+        target: /data/raw
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=16m
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    stop_grace_period: 15s

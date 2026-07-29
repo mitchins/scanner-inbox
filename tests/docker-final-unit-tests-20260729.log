@@ -1,0 +1,12 @@
+test_button_marker_is_specific (test_listener.ListenerConfigurationTest.test_button_marker_is_specific) ... ok
+test_defaults_preserve_proven_lab_configuration (test_listener.ListenerConfigurationTest.test_defaults_preserve_proven_lab_configuration) ... ok
+test_environment_overrides_runtime_configuration (test_listener.ListenerConfigurationTest.test_environment_overrides_runtime_configuration) ... ok
+test_event_group_must_be_multicast (test_listener.ListenerConfigurationTest.test_event_group_must_be_multicast) ... ok
+test_output_name_contract (test_listener.ListenerConfigurationTest.test_output_name_contract) ... ok
+test_raw_scan_must_be_absolute (test_listener.ListenerConfigurationTest.test_raw_scan_must_be_absolute) ... ok
+test_scan_command_uses_settings (test_listener.ListenerConfigurationTest.test_scan_command_uses_settings) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.001s
+
+OK

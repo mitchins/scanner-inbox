@@ -1,0 +1,13 @@
+image_id=sha256:b47953f83441c58e27dcba0ca515ddfd474630ba1bb2c2d9435f34d26229ccab size=110055971 user=10001:10001 entrypoint=["/usr/bin/python3","/app/es60w_listener.py"]
+uid=10001(es60w) gid=10001(es60w) groups=10001(es60w)
+Python 3.12.3
+python_stdlib=ok
+scanimage (sane-backends) 1.2.1-debian; backend version 1.2.1
+epsonds_backend=present
+/app/es60w_listener.py 18233 bytes
+configuration_error=RAW_SCAN must be an absolute path, got 'relative'
+invalid_config_test=pass exit_code=2
+ Container scanner-inbox-es60w-listener-run-6b8aceff2d70 Creating
+ Container scanner-inbox-es60w-listener-run-6b8aceff2d70 Created
+bind_probe=/data/raw/.container-write-probe-20260729 owner=999:988 bytes=0
+rootfs_read_only=pass

@@ -1,0 +1,48 @@
+name: scanner-inbox
+services:
+  es60w-listener:
+    build:
+      context: /opt/es60w-lab
+      dockerfile: Dockerfile
+    cap_drop:
+      - ALL
+    container_name: scanner-inbox
+    environment:
+      ES60W_EVENT_GROUP: 239.255.255.253
+      ES60W_EVENT_PORT: "2968"
+      ES60W_LOCAL_IP: 192.168.6.180
+      ES60W_LOG_FILE: ""
+      ES60W_LOG_LEVEL: INFO
+      ES60W_MAX_ZERO_BYTE_ATTEMPTS: "3"
+      ES60W_OUTPUT_FORMAT: png
+      ES60W_PAGE_HEIGHT_MM: "355.6"
+      ES60W_PAGE_WIDTH_MM: "215.9"
+      ES60W_POST_SCAN_SUPPRESSION_SECONDS: "3"
+      ES60W_REACHABILITY_INTERVAL_SECONDS: "2"
+      ES60W_RESOLUTION: "300"
+      ES60W_SANE_DEVICE: epsonds:net:192.168.6.134
+      ES60W_SCAN_MODE: Color
+      ES60W_SCAN_SOURCE: ADF Front
+      ES60W_SCAN_START_DELAY_SECONDS: "0.75"
+      ES60W_SCAN_TIMEOUT_SECONDS: "120"
+      ES60W_SCANIMAGE_BINARY: /usr/bin/scanimage
+      ES60W_SCANNER_IP: 192.168.6.134
+      ES60W_SCANNER_PORT: "1865"
+      ES60W_TRANSACTION_RETENTION_SECONDS: "120"
+      ES60W_ZERO_BYTE_RETRY_DELAY_SECONDS: "1"
+      RAW_SCAN: /data/raw
+    image: scanner-inbox:local
+    init: true
+    network_mode: host
+    read_only: true
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    stop_grace_period: 15s
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=16m
+    user: 999:988
+    volumes:
+      - type: bind
+        source: /opt/es60w-lab/output
+        target: /data/raw

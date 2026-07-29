@@ -9,6 +9,8 @@ Type=simple
 User=es60w
 Group=es60w
 WorkingDirectory=/opt/es60w-lab
+EnvironmentFile=-/etc/default/es60w-listener
+Environment=PYTHONUNBUFFERED=1
 ExecStart=/usr/bin/python3 /opt/es60w-lab/src/es60w_listener.py
 Restart=on-failure
 RestartSec=3s

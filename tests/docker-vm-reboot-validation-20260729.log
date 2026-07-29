@@ -1,0 +1,18 @@
+Docker VM reboot validation — 2026-07-29 UTC
+previous_boot_id=5139e756-752f-4925-be4e-735e09ad3f02
+current_boot_id=a6876169-20af-4a00-96bc-051a4d513a52
+boot_time=2026-07-29 11:57:09
+ActiveState=active
+SubState=running
+UnitFileState=enabled
+ActiveState=inactive
+SubState=dead
+UnitFileState=disabled
+status=running running=true started=2026-07-29T11:57:18.505308784Z restart=unless-stopped network=host readonly=true user=999:988
+UNCONN 0      0            0.0.0.0:2968       0.0.0.0:*
+png_count=19
+post_boot_png_count=0
+2026-07-29T11:57:18Z level=INFO configuration_loaded=true scanner_ip=192.168.6.134 local_ip=192.168.6.180 event_group=239.255.255.253 event_port=2968 sane_device=epsonds:net:192.168.6.134 raw_scan=/data/raw output_format=png log_file=stdout_only
+2026-07-29T11:57:18Z level=INFO scanner_reachable=false state=required_starting_assumption
+2026-07-29T11:57:18Z level=INFO scanner_reachable=true state=initial
+2026-07-29T11:57:18Z level=INFO listener_ready event_source=udp_multicast group=239.255.255.253 port=2968 marker=b'service:NetScanMonitor-agent'

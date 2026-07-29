@@ -195,3 +195,83 @@ find output -maxdepth 1 -type f -name '*.png' -print0 \
   | sort -z | xargs -0 file
 sha256sum output/*.png | sort -k2 > tests/output-sha256-manifest.txt
 ```
+
+## 2026-07-29 — Environment-configurable service
+
+```sh
+python3 -m py_compile src/es60w_listener.py
+python3 -m unittest discover -s tests -v
+git diff --check
+systemd-analyze verify config/es60w-listener.service
+
+sudo install -o root -g root -m 0644 \
+  config/es60w-listener.env.systemd /etc/default/es60w-listener
+sudo install -o root -g root -m 0644 \
+  config/es60w-listener.service \
+  /etc/systemd/system/es60w-listener.service
+sudo systemctl daemon-reload
+sudo systemctl restart es60w-listener.service
+
+systemctl show es60w-listener.service \
+  -p ActiveState -p SubState -p MainPID -p User
+journalctl -u es60w-listener.service -n 30 --no-pager -o cat
+```
+
+## 2026-07-29 — Official Docker CE installation
+
+Docker Engine is installed from Docker's signed upstream APT repository, not
+Ubuntu's `docker.io` package:
+
+```sh
+curl --fail --silent --show-error --location \
+  https://download.docker.com/linux/ubuntu/gpg \
+  --output packages/docker.asc
+sha256sum packages/docker.asc
+
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo install -o root -g root -m 0644 \
+  packages/docker.asc /etc/apt/keyrings/docker.asc
+sudo install -o root -g root -m 0644 \
+  config/docker.sources /etc/apt/sources.list.d/docker.sources
+
+sudo apt-get update
+sudo env DEBIAN_FRONTEND=noninteractive apt-get install -y \
+  docker-ce docker-ce-cli containerd.io \
+  docker-buildx-plugin docker-compose-plugin
+
+docker version
+docker compose version
+```
+
+## 2026-07-29 — Container build and cutover
+
+```sh
+sudo docker compose --env-file config/compose.env.lab config
+sudo docker compose --env-file config/compose.env.lab build --pull
+
+# Non-hardware validation: runtime, SANE backend, user, bind mount, and
+# read-only root filesystem.
+sudo docker run --rm --network none --entrypoint /bin/sh \
+  scanner-inbox:local -c \
+  'id; python3 --version; scanimage --version'
+sudo docker compose --env-file config/compose.env.lab run \
+  --rm --no-deps --entrypoint /bin/sh es60w-listener
+
+# Exactly one receiver may run during a physical-button test.
+sudo systemctl stop es60w-listener.service
+sudo docker compose --env-file config/compose.env.lab up -d --no-build
+sudo docker compose --env-file config/compose.env.lab ps
+sudo docker compose --env-file config/compose.env.lab logs -f
+
+# Make Docker the sole boot-time receiver after the first successful scan.
+sudo systemctl disable --now es60w-listener.service
+sudo systemctl restart docker.service
+sudo docker compose --env-file config/compose.env.lab ps
+
+# Full boot recovery check.
+cat /proc/sys/kernel/random/boot_id
+sudo systemctl reboot
+cat /proc/sys/kernel/random/boot_id
+systemctl is-enabled es60w-listener.service
+sudo docker compose --env-file config/compose.env.lab ps
+```

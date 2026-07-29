@@ -185,7 +185,9 @@ first delayed attempt.
 - Unit: `/etc/systemd/system/es60w-listener.service`
 - Checked-in source: `config/es60w-listener.service`
 - Runtime user/group: `es60w:es60w` (system account, no login shell)
-- Enabled at boot and currently managed by systemd.
+- This was the enabled production proof during the Phase 1 reliability gate.
+  It was disabled after the Docker cutover and remains installed only as a
+  rollback path.
 - Uses `Restart=on-failure`, explicit `network-online.target` ordering, a
   strict read-only filesystem sandbox, and write access only to lab logs and
   output.
@@ -249,3 +251,80 @@ The requested physical-button-to-file reliability gate **passed**:
   created exactly one file, with no failure or extra output.
 
 OCR, classification, filing, CIFS, and tax workflows have not been started.
+
+## 2026-07-29 — Container-readiness checkpoint
+
+The proven listener was refactored without changing its button transaction
+or SANE acquisition semantics:
+
+- `RAW_SCAN` now selects the output directory.
+- Scanner, interface, event, SANE, scan, retry, and logging settings are
+  environment-configurable.
+- An empty `ES60W_LOG_FILE` selects stdout-only logging for a future
+  container.
+- Invalid IP addresses, ports, formats, and relative output/log paths fail
+  immediately with a configuration error.
+- The systemd deployment reads `/etc/default/es60w-listener`.
+
+The container network must expose the LAN multicast event and the scanner's
+TCP service. Host networking is the least surprising first implementation on
+Linux. Docker has deliberately not been added at this checkpoint.
+
+## 2026-07-29 — Docker implementation
+
+Official Docker CE was installed from Docker's signed upstream Noble APT
+repository. Ubuntu's `docker.io` package was not installed:
+
+- Docker Engine/CLI: `29.6.2`
+- containerd.io: `2.2.6`
+- Buildx plugin: `0.35.0`
+- Compose plugin: `5.3.1`
+
+The locally built `scanner-inbox:local` image uses Ubuntu 24.04 and SANE
+`1.2.1`, matching the proven host backend. The final image contains the
+`epsonds` backend and only `src/es60w_listener.py` under `/app`.
+
+Pre-hardware validation established:
+
+- the build context is restricted by `.dockerignore`;
+- the listener imports successfully under the full Python runtime;
+- an invalid relative `RAW_SCAN` exits with status 2;
+- the configured unprivileged UID/GID can write the bind-mounted raw inbox;
+- the root filesystem is read-only;
+- every Linux capability is dropped and `no-new-privileges` is enabled;
+- host networking exposes the required multicast socket without macvlan.
+
+The first image attempt used `python3-minimal`, which lacked the `dataclasses`
+standard-library module and could not start the listener. Runtime validation
+caught this before cutover; the final Dockerfile installs the complete
+`python3` package.
+
+## 2026-07-29 — Docker physical-button and recovery gate
+
+The host-network Compose deployment passed three physical-button scans:
+
+| Condition | Transaction | Bytes | Elapsed | Attempt |
+|---|---:|---:|---:|---:|
+| Initial container cutover | `c73a` | 10,951,833 | 8.069 s | 1 |
+| After Docker daemon restart | `11e0` | 10,137,060 | 7.063 s | 1 |
+| After full VM reboot | `645c` | 10,568,188 | 7.284 s | 1 |
+
+Each output is a non-empty 2544 x 4193 RGB PNG. Each transaction's duplicate
+packet was rejected and produced no extra file.
+
+Recovery evidence:
+
+- Restarting `docker.service` changed the container start time, restored the
+  multicast listener automatically, and created no phantom file.
+- VM boot ID changed from
+  `5139e756-752f-4925-be4e-735e09ad3f02` to
+  `a6876169-20af-4a00-96bc-051a4d513a52`.
+- Docker and the existing `unless-stopped` container started automatically
+  after the VM reboot.
+- No output appeared during boot; the subsequent physical press scanned
+  successfully.
+- The native `es60w-listener.service` is disabled and inactive, ensuring only
+  one receiver starts at boot.
+
+The containerized physical-button-to-file acquisition gate therefore passes
+without macvlan.

@@ -1,0 +1,42 @@
+Docker physical-button validation — 2026-07-29 UTC
+
+image=scanner-inbox:local status=running started=2026-07-29T11:56:11.230391498Z restart_count=0 network=host readonly=true user=999:988 restart_policy=unless-stopped
+
+2026-07-29T11:47:27Z level=INFO configuration_loaded=true scanner_ip=192.168.6.134 local_ip=192.168.6.180 event_group=239.255.255.253 event_port=2968 sane_device=epsonds:net:192.168.6.134 raw_scan=/data/raw output_format=png log_file=stdout_only
+2026-07-29T11:47:27Z level=INFO scanner_reachable=false state=required_starting_assumption
+2026-07-29T11:47:28Z level=INFO scanner_reachable=false state=initial
+2026-07-29T11:47:28Z level=INFO listener_ready event_source=udp_multicast group=239.255.255.253 port=2968 marker=b'service:NetScanMonitor-agent'
+2026-07-29T11:55:30Z level=INFO scanner_reachable=true transition=available
+2026-07-29T11:55:31Z level=INFO discovery_event=true event_source=udp/2968 source=192.168.6.134:2968 payload_bytes=102 transaction_id=c73a
+2026-07-29T11:55:31Z level=INFO candidate_button_event=true event_source=NetScanMonitor-agent transaction_id=c73a
+2026-07-29T11:55:31Z level=INFO debounce_decision=accept reason=new_transaction_while_reachable transaction_id=c73a
+2026-07-29T11:55:31Z level=INFO scan_scheduled event_source=udp/2968:NetScanMonitor-agent delay_seconds=0.75 output=/data/raw/2026-07-29_11-55-31_ES-60W.png
+2026-07-29T11:55:32Z level=INFO scan_started event_source=udp/2968:NetScanMonitor-agent device=epsonds:net:192.168.6.134 output=/data/raw/2026-07-29_11-55-31_ES-60W.png attempt=1
+2026-07-29T11:55:39Z level=INFO scan_completed output=/data/raw/2026-07-29_11-55-31_ES-60W.png byte_count=10951833 elapsed_seconds=8.069 attempt=1 backend_warning='scanimage: rounded value of br-y from 355.6 to 355.6\nCorrupt JPEG data: found marker 0xd9 instead of RST1'
+2026-07-29T11:55:39Z level=INFO discovery_event=true event_source=udp/2968 source=192.168.6.134:2968 payload_bytes=102 transaction_id=c73a
+2026-07-29T11:55:39Z level=INFO candidate_button_event=false debounce_decision=reject reason=duplicate_transaction transaction_id=c73a seconds_since_candidate=8.093
+2026-07-29T11:56:09Z level=INFO shutdown_signal=15
+2026-07-29T11:56:10Z level=INFO listener_stopped=true
+2026-07-29T11:56:11Z level=INFO configuration_loaded=true scanner_ip=192.168.6.134 local_ip=192.168.6.180 event_group=239.255.255.253 event_port=2968 sane_device=epsonds:net:192.168.6.134 raw_scan=/data/raw output_format=png log_file=stdout_only
+2026-07-29T11:56:11Z level=INFO scanner_reachable=false state=required_starting_assumption
+2026-07-29T11:56:11Z level=INFO scanner_reachable=true state=initial
+2026-07-29T11:56:11Z level=INFO listener_ready event_source=udp_multicast group=239.255.255.253 port=2968 marker=b'service:NetScanMonitor-agent'
+2026-07-29T11:56:26Z level=INFO discovery_event=true event_source=udp/2968 source=192.168.6.134:2968 payload_bytes=102 transaction_id=11e0
+2026-07-29T11:56:26Z level=INFO candidate_button_event=true event_source=NetScanMonitor-agent transaction_id=11e0
+2026-07-29T11:56:26Z level=INFO debounce_decision=accept reason=new_transaction_while_reachable transaction_id=11e0
+2026-07-29T11:56:26Z level=INFO scan_scheduled event_source=udp/2968:NetScanMonitor-agent delay_seconds=0.75 output=/data/raw/2026-07-29_11-56-26_ES-60W.png
+2026-07-29T11:56:27Z level=INFO scan_started event_source=udp/2968:NetScanMonitor-agent device=epsonds:net:192.168.6.134 output=/data/raw/2026-07-29_11-56-26_ES-60W.png attempt=1
+2026-07-29T11:56:33Z level=INFO scan_completed output=/data/raw/2026-07-29_11-56-26_ES-60W.png byte_count=10137060 elapsed_seconds=7.063 attempt=1 backend_warning='scanimage: rounded value of br-y from 355.6 to 355.6\nCorrupt JPEG data: found marker 0xd9 instead of RST1'
+2026-07-29T11:56:33Z level=INFO discovery_event=true event_source=udp/2968 source=192.168.6.134:2968 payload_bytes=102 transaction_id=11e0
+2026-07-29T11:56:33Z level=INFO candidate_button_event=false debounce_decision=reject reason=duplicate_transaction transaction_id=11e0 seconds_since_candidate=7.067
+
+output/2026-07-29_11-55-31_ES-60W.png: PNG image data, 2544 x 4193, 8-bit/color RGB, non-interlaced
+output/2026-07-29_11-56-26_ES-60W.png: PNG image data, 2544 x 4193, 8-bit/color RGB, non-interlaced
+ee0ec52f0f0d712bf10165ae044ce8867ed597d78d55a0bd62dc34f5b40f21c1  output/2026-07-29_11-55-31_ES-60W.png
+37cfe474458f525747a9c702a6a53638bfae422e813f89ff85014608bba28d2e  output/2026-07-29_11-56-26_ES-60W.png
+
+ActiveState=inactive
+UnitFileState=disabled
+ActiveState=active
+UnitFileState=enabled
+boot_id=5139e756-752f-4925-be4e-735e09ad3f02

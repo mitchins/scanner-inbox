@@ -1,0 +1,19 @@
+MainPID=5017
+EnvironmentFiles=/etc/default/es60w-listener (ignore_errors=yes)
+User=es60w
+Group=es60w
+ActiveState=active
+SubState=running
+Stopping es60w-listener.service - Epson ES-60W physical-button scan receiver...
+2026-07-29T11:32:29Z level=INFO shutdown_signal=15
+2026-07-29T11:32:30Z level=INFO listener_stopped=true
+es60w-listener.service: Deactivated successfully.
+Stopped es60w-listener.service - Epson ES-60W physical-button scan receiver.
+es60w-listener.service: Consumed 1.691s CPU time, 50.6M memory peak, 0B memory swap peak.
+Started es60w-listener.service - Epson ES-60W physical-button scan receiver.
+2026-07-29T11:32:30Z level=INFO configuration_loaded=true scanner_ip=192.168.6.134 local_ip=192.168.6.180 event_group=239.255.255.253 event_port=2968 sane_device=epsonds:net:192.168.6.134 raw_scan=/opt/es60w-lab/output output_format=png log_file=/opt/es60w-lab/logs/es60w-listener.log
+2026-07-29T11:32:30Z level=INFO scanner_reachable=false state=required_starting_assumption
+2026-07-29T11:32:31Z level=INFO scanner_reachable=false state=initial
+2026-07-29T11:32:31Z level=INFO listener_ready event_source=udp_multicast group=239.255.255.253 port=2968 marker=b'service:NetScanMonitor-agent'
+UNCONN 0      0            0.0.0.0:2968       0.0.0.0:*
+	inet  239.255.255.253

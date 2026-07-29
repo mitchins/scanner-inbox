@@ -1,0 +1,9 @@
+# Raw evidence and acquired documents remain on this VM but are not committed.
+/captures/*.pcap
+/captures/*.pcapng
+/output/*
+/packages/*.exe
+/packages/ES60W_EScan2_67810_AM.outer/
+/logs/es60w-listener.log
+/src/__pycache__/
+/tests/__pycache__/

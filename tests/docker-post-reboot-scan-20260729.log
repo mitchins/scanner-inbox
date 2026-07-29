@@ -1,0 +1,21 @@
+Docker post-VM-reboot physical scan — 2026-07-29 UTC
+boot_id=a6876169-20af-4a00-96bc-051a4d513a52
+status=running running=true started=2026-07-29T11:57:18.505308784Z restart_policy=unless-stopped
+2026-07-29T11:57:18Z level=INFO configuration_loaded=true scanner_ip=192.168.6.134 local_ip=192.168.6.180 event_group=239.255.255.253 event_port=2968 sane_device=epsonds:net:192.168.6.134 raw_scan=/data/raw output_format=png log_file=stdout_only
+2026-07-29T11:57:18Z level=INFO scanner_reachable=false state=required_starting_assumption
+2026-07-29T11:57:18Z level=INFO scanner_reachable=true state=initial
+2026-07-29T11:57:18Z level=INFO listener_ready event_source=udp_multicast group=239.255.255.253 port=2968 marker=b'service:NetScanMonitor-agent'
+2026-07-29T11:59:17Z level=INFO discovery_event=true event_source=udp/2968 source=192.168.6.134:2968 payload_bytes=102 transaction_id=645c
+2026-07-29T11:59:17Z level=INFO candidate_button_event=true event_source=NetScanMonitor-agent transaction_id=645c
+2026-07-29T11:59:17Z level=INFO debounce_decision=accept reason=new_transaction_while_reachable transaction_id=645c
+2026-07-29T11:59:17Z level=INFO scan_scheduled event_source=udp/2968:NetScanMonitor-agent delay_seconds=0.75 output=/data/raw/2026-07-29_11-59-17_ES-60W.png
+2026-07-29T11:59:18Z level=INFO scan_started event_source=udp/2968:NetScanMonitor-agent device=epsonds:net:192.168.6.134 output=/data/raw/2026-07-29_11-59-17_ES-60W.png attempt=1
+2026-07-29T11:59:24Z level=INFO scan_completed output=/data/raw/2026-07-29_11-59-17_ES-60W.png byte_count=10568188 elapsed_seconds=7.284 attempt=1 backend_warning='scanimage: rounded value of br-y from 355.6 to 355.6\nCorrupt JPEG data: found marker 0xd9 instead of RST7'
+2026-07-29T11:59:24Z level=INFO discovery_event=true event_source=udp/2968 source=192.168.6.134:2968 payload_bytes=102 transaction_id=645c
+2026-07-29T11:59:24Z level=INFO candidate_button_event=false debounce_decision=reject reason=duplicate_transaction transaction_id=645c seconds_since_candidate=7.289
+output/2026-07-29_11-59-17_ES-60W.png: PNG image data, 2544 x 4193, 8-bit/color RGB, non-interlaced
+79715746fe096672df07dedaf4435688222985489d615ef308a263f356113793  output/2026-07-29_11-59-17_ES-60W.png
+ActiveState=active
+UnitFileState=enabled
+ActiveState=inactive
+UnitFileState=disabled

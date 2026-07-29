@@ -1,0 +1,6 @@
+containerd.io	2.2.6-1~ubuntu.24.04~noble	ii
+docker-buildx-plugin	0.35.0-1~ubuntu.24.04~noble	ii
+docker-ce	5:29.6.2-1~ubuntu.24.04~noble	ii
+docker-ce-cli	5:29.6.2-1~ubuntu.24.04~noble	ii
+docker-ce-rootless-extras	5:29.6.2-1~ubuntu.24.04~noble	ii
+docker-compose-plugin	5.3.1-1~ubuntu.24.04~noble	ii
