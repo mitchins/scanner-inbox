@@ -1,0 +1,23 @@
+experiment=post VM reboot scanner power-on control then tenth clean button scan
+start_utc=2026-07-29T11:13:02+00:00
+planned_duration_seconds=420
+end_utc=2026-07-29T11:15:27+00:00
+timeout_exit_code=0
+42fbc69f6dc20c25ce2e22b919162adb552d38ae4104646f3abf4bb8631948d1  /opt/es60w-lab/captures/post-vm-reboot-power-button_20260729T111302Z.pcap
+File name:           /opt/es60w-lab/captures/post-vm-reboot-power-button_20260729T111302Z.pcap
+File type:           Wireshark/tcpdump/... - pcap
+File encapsulation:  Ethernet
+File timestamp precision:  microseconds (6)
+Packet size limit:   file hdr: 262144 bytes
+Number of packets:   2970
+File size:           2551 kB
+Data size:           2504 kB
+Capture duration:    142.381402 seconds
+First packet time:   2026-07-29 11:13:02.996757
+Last packet time:    2026-07-29 11:15:25.378159
+Data byte rate:      17 kBps
+Data bit rate:       140 kbps
+Average packet size: 843.11 bytes
+Average packet rate: 20 packets/s
+SHA256:              42fbc69f6dc20c25ce2e22b919162adb552d38ae4104646f3abf4bb8631948d1
+SHA1:                610fcfe8d21e36d2e9f279fd0987eb79ff20c82d

@@ -1,0 +1,23 @@
+experiment=proof listener receives physical-button multicast and launches SANE
+start_utc=2026-07-29T09:33:12+00:00
+planned_duration_seconds=180
+end_utc=2026-07-29T09:33:43+00:00
+timeout_exit_code=0
+baeecc71b3ce197429aa889a5540731b8dcc0b84ef9f42254ccac4937a2c9253  captures/proof-listener-button_20260729T093312Z.pcap
+File name:           captures/proof-listener-button_20260729T093312Z.pcap
+File type:           Wireshark/tcpdump/... - pcap
+File encapsulation:  Ethernet
+File timestamp precision:  microseconds (6)
+Packet size limit:   file hdr: 262144 bytes
+Number of packets:   97
+File size:           47 kB
+Data size:           46 kB
+Capture duration:    26.285765 seconds
+First packet time:   2026-07-29 09:33:17.057104
+Last packet time:    2026-07-29 09:33:43.342869
+Data byte rate:      1764 bytes/s
+Data bit rate:       14 kbps
+Average packet size: 478.18 bytes
+Average packet rate: 3 packets/s
+SHA256:              baeecc71b3ce197429aa889a5540731b8dcc0b84ef9f42254ccac4937a2c9253
+SHA1:                2ffe02f949883d656a4f3af7fd34b8d9344077fd

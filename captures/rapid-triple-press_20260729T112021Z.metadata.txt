@@ -1,0 +1,23 @@
+experiment=one loaded sheet, three rapid physical Start/Send presses; require one file
+start_utc=2026-07-29T11:20:21+00:00
+planned_duration_seconds=180
+end_utc=2026-07-29T11:21:12+00:00
+timeout_exit_code=0
+d050d215e2c90e3213a35158a79b7852b1457bbc5926714354240c0254d7b5ad  /opt/es60w-lab/captures/rapid-triple-press_20260729T112021Z.pcap
+File name:           /opt/es60w-lab/captures/rapid-triple-press_20260729T112021Z.pcap
+File type:           Wireshark/tcpdump/... - pcap
+File encapsulation:  Ethernet
+File timestamp precision:  microseconds (6)
+Packet size limit:   file hdr: 262144 bytes
+Number of packets:   2667
+File size:           2585 kB
+Data size:           2542 kB
+Capture duration:    49.175820 seconds
+First packet time:   2026-07-29 11:20:22.144977
+Last packet time:    2026-07-29 11:21:11.320797
+Data byte rate:      51 kBps
+Data bit rate:       413 kbps
+Average packet size: 953.48 bytes
+Average packet rate: 54 packets/s
+SHA256:              d050d215e2c90e3213a35158a79b7852b1457bbc5926714354240c0254d7b5ad
+SHA1:                47df110dbdf56f2e47874efb45c78657bb74da1d

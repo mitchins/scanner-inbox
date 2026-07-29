@@ -1,0 +1,6 @@
+pre_reboot_utc=2026-07-29T10:03:04+00:00
+boot_id=4aaf84a0-bb5c-4f98-a76b-d4a4b490a92a
+uptime=up 55 minutes
+service_enabled=enabled
+service_active=active
+git_head=b07ace6f7480917d2d67eb852e656a4c7a2f7004

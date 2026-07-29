@@ -1,0 +1,23 @@
+experiment=listener observes off/on, rejects power-on burst, then scans on button
+start_utc=2026-07-29T09:43:31+00:00
+planned_duration_seconds=600
+end_utc=2026-07-29T09:48:18+00:00
+timeout_exit_code=0
+477f01e022e1ef008fd5a089f31d21fbbc0938e1779711055e065f790d5dca38  /opt/es60w-lab/captures/power-cycle-button-proof_20260729T094331Z.pcap
+File name:           /opt/es60w-lab/captures/power-cycle-button-proof_20260729T094331Z.pcap
+File type:           Wireshark/tcpdump/... - pcap
+File encapsulation:  Ethernet
+File timestamp precision:  microseconds (6)
+Packet size limit:   file hdr: 262144 bytes
+Number of packets:   4829
+File size:           2884 kB
+Data size:           2807 kB
+Capture duration:    285.748351 seconds
+First packet time:   2026-07-29 09:43:31.939103
+Last packet time:    2026-07-29 09:48:17.687454
+Data byte rate:      9824 bytes/s
+Data bit rate:       78 kbps
+Average packet size: 581.34 bytes
+Average packet rate: 16 packets/s
+SHA256:              477f01e022e1ef008fd5a089f31d21fbbc0938e1779711055e065f790d5dca38
+SHA1:                54711e1970e82c3ee5eb7bc92ee7b58b2c52798a

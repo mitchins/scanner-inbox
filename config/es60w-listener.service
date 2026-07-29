@@ -1,0 +1,31 @@
+[Unit]
+Description=Epson ES-60W physical-button scan receiver
+Documentation=file:/opt/es60w-lab/README.md
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=es60w
+Group=es60w
+WorkingDirectory=/opt/es60w-lab
+ExecStart=/usr/bin/python3 /opt/es60w-lab/src/es60w_listener.py
+Restart=on-failure
+RestartSec=3s
+TimeoutStopSec=10s
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+ProtectClock=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+ReadWritePaths=/opt/es60w-lab/output /opt/es60w-lab/logs
+
+[Install]
+WantedBy=multi-user.target

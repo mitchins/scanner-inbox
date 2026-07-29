@@ -1,0 +1,13 @@
+post_reboot_utc=2026-07-29T11:12:41+00:00
+boot_id=5139e756-752f-4925-be4e-735e09ad3f02
+uptime=up 1 hour, 9 minutes
+service_enabled=enabled
+service_active=active
+main_pid=701
+scanner_ping:
+PING 192.168.6.134 (192.168.6.134) 56(84) bytes of data.
+
+--- 192.168.6.134 ping statistics ---
+1 packets transmitted, 0 received, 100% packet loss, time 0ms
+
+scanner_tcp_1865:

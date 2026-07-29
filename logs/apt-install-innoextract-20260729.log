@@ -1,0 +1,59 @@
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  libboost-filesystem1.83.0 libboost-iostreams1.83.0
+  libboost-program-options1.83.0
+The following NEW packages will be installed:
+  innoextract libboost-filesystem1.83.0 libboost-iostreams1.83.0
+  libboost-program-options1.83.0
+0 upgraded, 4 newly installed, 0 to remove and 0 not upgraded.
+Need to get 1076 kB of archives.
+After this operation, 7672 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libboost-filesystem1.83.0 amd64 1.83.0-2.1ubuntu3.2 [284 kB]
+Get:2 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libboost-iostreams1.83.0 amd64 1.83.0-2.1ubuntu3.2 [260 kB]
+Get:3 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libboost-program-options1.83.0 amd64 1.83.0-2.1ubuntu3.2 [321 kB]
+Get:4 http://archive.ubuntu.com/ubuntu noble/universe amd64 innoextract amd64 1.9-0.1build1 [213 kB]
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+Fetched 1076 kB in 3s (411 kB/s)
+Selecting previously unselected package libboost-filesystem1.83.0:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 81296 files and directories currently installed.)
+Preparing to unpack .../libboost-filesystem1.83.0_1.83.0-2.1ubuntu3.2_amd64.deb ...
+Unpacking libboost-filesystem1.83.0:amd64 (1.83.0-2.1ubuntu3.2) ...
+Selecting previously unselected package libboost-iostreams1.83.0:amd64.
+Preparing to unpack .../libboost-iostreams1.83.0_1.83.0-2.1ubuntu3.2_amd64.deb ...
+Unpacking libboost-iostreams1.83.0:amd64 (1.83.0-2.1ubuntu3.2) ...
+Selecting previously unselected package libboost-program-options1.83.0:amd64.
+Preparing to unpack .../libboost-program-options1.83.0_1.83.0-2.1ubuntu3.2_amd64.deb ...
+Unpacking libboost-program-options1.83.0:amd64 (1.83.0-2.1ubuntu3.2) ...
+Selecting previously unselected package innoextract.
+Preparing to unpack .../innoextract_1.9-0.1build1_amd64.deb ...
+Unpacking innoextract (1.9-0.1build1) ...
+Setting up libboost-program-options1.83.0:amd64 (1.83.0-2.1ubuntu3.2) ...
+Setting up libboost-filesystem1.83.0:amd64 (1.83.0-2.1ubuntu3.2) ...
+Setting up libboost-iostreams1.83.0:amd64 (1.83.0-2.1ubuntu3.2) ...
+Setting up innoextract (1.9-0.1build1) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.8) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.

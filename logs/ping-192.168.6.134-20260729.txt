@@ -1,0 +1,8 @@
+PING 192.168.6.134 (192.168.6.134) 56(84) bytes of data.
+64 bytes from 192.168.6.134: icmp_seq=1 ttl=64 time=137 ms
+64 bytes from 192.168.6.134: icmp_seq=2 ttl=64 time=3.44 ms
+64 bytes from 192.168.6.134: icmp_seq=3 ttl=64 time=3.93 ms
+
+--- 192.168.6.134 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2003ms
+rtt min/avg/max/mdev = 3.440/48.287/137.494/63.078 ms

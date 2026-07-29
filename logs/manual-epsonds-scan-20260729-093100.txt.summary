@@ -1,0 +1,12 @@
+device=epsonds:net:192.168.6.134
+command=scanimage -d epsonds:net:192.168.6.134 --format=png --source 'ADF Front' --mode Color --resolution 300 -x 215.9 -y 355.6
+scan_rc=0
+scan_start_epoch=1785317461.285372566
+scan_end_epoch=1785317468.998806006
+output/manual-test-20260729-093100.png: PNG image data, 2544 x 4193, 8-bit/color RGB, non-interlaced
+bytes=12376470 path=output/manual-test-20260729-093100.png
+3034f6acc81d4485114f43fa213154c136938ab7ebd788c8b14642012f361fbd  output/manual-test-20260729-093100.png
+3efcd90941fd6bb5298fc4f532f3147cde85ee76ab11d5c668fdf60dabcf1be2  captures/manual-epsonds-scan_20260729-093100.pcap
+scan_stderr:
+scanimage: rounded value of br-y from 355.6 to 355.6
+Corrupt JPEG data: found marker 0xd9 instead of RST7

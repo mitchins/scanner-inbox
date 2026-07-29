@@ -1,0 +1,23 @@
+experiment=ten intended one-press scans under installed systemd service
+start_utc=2026-07-29T09:57:11+00:00
+planned_duration_seconds=900
+end_utc=2026-07-29T10:00:17+00:00
+timeout_exit_code=0
+0bea21351930c71c16230ff64112284cdd36b51fb1428b95bf5bc6937f5c3410  /opt/es60w-lab/captures/reliability-10scan_20260729T095711Z.pcap
+File name:           /opt/es60w-lab/captures/reliability-10scan_20260729T095711Z.pcap
+File type:           Wireshark/tcpdump/... - pcap
+File encapsulation:  Ethernet
+File timestamp precision:  microseconds (6)
+Packet size limit:   file hdr: 262144 bytes
+Number of packets:   22 k
+File size:           22 MB
+Data size:           21 MB
+Capture duration:    172.733384 seconds
+First packet time:   2026-07-29 09:57:11.768073
+Last packet time:    2026-07-29 10:00:04.501457
+Data byte rate:      127 kBps
+Data bit rate:       1018 kbps
+Average packet size: 988.28 bytes
+Average packet rate: 128 packets/s
+SHA256:              0bea21351930c71c16230ff64112284cdd36b51fb1428b95bf5bc6937f5c3410
+SHA1:                891608b2277619dff26aa600d0d232bf30342a1b

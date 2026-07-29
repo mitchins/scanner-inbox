@@ -1,0 +1,12 @@
+# Nmap 7.94SVN scan initiated Wed Jul 29 09:21:45 2026 as: nmap -Pn -sT -T3 --max-retries 2 -p- --reason -oA logs/nmap-full-tcp-192.168.6.134-20260729 192.168.6.134
+Warning: 192.168.6.134 giving up on port because retransmission cap hit (2).
+Nmap scan report for EPSON524CB2.local (192.168.6.134)
+Host is up, received user-set (0.037s latency).
+Not shown: 64346 closed tcp ports (conn-refused), 1185 filtered tcp ports (no-response)
+PORT      STATE SERVICE   REASON
+80/tcp    open  http      syn-ack
+1865/tcp  open  entp      syn-ack
+3911/tcp  open  prnstatus syn-ack
+53048/tcp open  unknown   syn-ack
+
+# Nmap done at Wed Jul 29 09:22:17 2026 -- 1 IP address (1 host up) scanned in 32.07 seconds

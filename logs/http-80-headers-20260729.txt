@@ -1,0 +1,6 @@
+HTTP/1.1 404 Not Found
+Server: Mongoose/6.5
+Content-Type: text/plain
+Connection: close
+Content-Length: 0
+

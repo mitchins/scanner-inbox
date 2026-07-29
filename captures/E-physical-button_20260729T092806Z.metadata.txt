@@ -1,0 +1,34 @@
+experiment=E one physical Start/Send button press; user instructed after capture armed
+start_utc=2026-07-29T09:28:06+00:00
+interface=eth0
+capture_filter=host 192.168.6.134 or port 5353 or port 137 or port 138 or port 1865
+planned_duration_seconds=180
+end_utc=2026-07-29T09:29:05+00:00
+timeout_exit_code=0
+3bc9cf78ab71c08d63845f17dee32c7a5879355b61a18a8ee761961a1f58a8dc  captures/E-physical-button_20260729T092806Z.pcap
+File name:           captures/E-physical-button_20260729T092806Z.pcap
+File type:           Wireshark/tcpdump/... - pcap
+File encapsulation:  Ethernet
+File timestamp precision:  microseconds (6)
+Packet size limit:   file hdr: 262144 bytes
+Number of packets:   482
+File size:           163 kB
+Data size:           155 kB
+Capture duration:    57.385313 seconds
+First packet time:   2026-07-29 09:28:06.306786
+Last packet time:    2026-07-29 09:29:03.692099
+Data byte rate:      2706 bytes/s
+Data bit rate:       21 kbps
+Average packet size: 322.17 bytes
+Average packet rate: 8 packets/s
+SHA256:              3bc9cf78ab71c08d63845f17dee32c7a5879355b61a18a8ee761961a1f58a8dc
+SHA1:                749422b56276c81c1df54c083c63d8fe51f32395
+Strict time order:   True
+Number of interfaces in file: 1
+Interface #0 info:
+                     Encapsulation = Ethernet (1 - ether)
+                     Capture length = 262144
+                     Time precision = microseconds (6)
+                     Time ticks per second = 1000000
+                     Number of stat entries = 0
+                     Number of packets = 482

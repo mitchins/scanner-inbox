@@ -1,0 +1,2 @@
+scanimage: rounded value of br-y from 355.6 to 355.6
+Corrupt JPEG data: found marker 0xd9 instead of RST7

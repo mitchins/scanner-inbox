@@ -1,0 +1,11 @@
+before_pid=10288 after_pid=10838
+2026-07-29T10:00:36+00:00 es60w-lab systemd[1]: Stopping es60w-listener.service - Epson ES-60W physical-button scan receiver...
+2026-07-29T10:00:36+00:00 es60w-lab python3[10288]: 2026-07-29T10:00:36Z level=INFO shutdown_signal=15
+2026-07-29T10:00:38+00:00 es60w-lab python3[10288]: 2026-07-29T10:00:38Z level=INFO listener_stopped=true
+2026-07-29T10:00:38+00:00 es60w-lab systemd[1]: es60w-listener.service: Deactivated successfully.
+2026-07-29T10:00:38+00:00 es60w-lab systemd[1]: Stopped es60w-listener.service - Epson ES-60W physical-button scan receiver.
+2026-07-29T10:00:38+00:00 es60w-lab systemd[1]: es60w-listener.service: Consumed 13.731s CPU time, 145.6M memory peak, 0B memory swap peak.
+2026-07-29T10:00:38+00:00 es60w-lab systemd[1]: Started es60w-listener.service - Epson ES-60W physical-button scan receiver.
+2026-07-29T10:00:38+00:00 es60w-lab python3[10838]: 2026-07-29T10:00:38Z level=INFO scanner_reachable=false state=required_starting_assumption
+2026-07-29T10:00:39+00:00 es60w-lab python3[10838]: 2026-07-29T10:00:39Z level=INFO scanner_reachable=false state=initial
+2026-07-29T10:00:39+00:00 es60w-lab python3[10838]: 2026-07-29T10:00:39Z level=INFO listener_ready event_source=udp_multicast group=239.255.255.253 port=2968 marker=b'service:NetScanMonitor-agent'

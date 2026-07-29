@@ -1,0 +1,25 @@
+experiment=A powered-on idle; no paper insertion or button press
+start_utc=2026-07-29T09:27:17+00:00
+interface=eth0
+capture_filter=host 192.168.6.134 or port 5353 or port 137 or port 138 or port 1865
+planned_duration_seconds=30
+end_utc=2026-07-29T09:27:47+00:00
+timeout_exit_code=124
+b774ce6ea35ec68e70d541c7dd44d5c6e9835d20d1b97e8bf74ec07b02ae714e  captures/A-idle-no-button_20260729T092717Z.pcap
+File name:           captures/A-idle-no-button_20260729T092717Z.pcap
+File type:           Wireshark/tcpdump/... - pcap
+File encapsulation:  Ethernet
+File timestamp precision:  microseconds (6)
+Packet size limit:   file hdr: 262144 bytes
+Number of packets:   134
+File size:           68 kB
+Data size:           66 kB
+Capture duration:    29.442902 seconds
+First packet time:   2026-07-29 09:27:17.896147
+Last packet time:    2026-07-29 09:27:47.339049
+Data byte rate:      2248 bytes/s
+Data bit rate:       17 kbps
+Average packet size: 494.01 bytes
+Average packet rate: 4 packets/s
+SHA256:              b774ce6ea35ec68e70d541c7dd44d5c6e9835d20d1b97e8bf74ec07b02ae714e
+SHA1:                0f6667bdb9aff02a6fd8ba24aaef677d3fddc322

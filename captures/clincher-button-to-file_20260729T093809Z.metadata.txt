@@ -1,0 +1,23 @@
+experiment=physical button to file through stateful Linux listener
+start_utc=2026-07-29T09:38:09+00:00
+planned_duration_seconds=180
+end_utc=2026-07-29T09:41:09+00:00
+timeout_exit_code=124
+5950be7b76440c6c4b296a84f845618c4feec466e7cf88892741f2ba108d9ade  /opt/es60w-lab/captures/clincher-button-to-file_20260729T093809Z.pcap
+File name:           /opt/es60w-lab/captures/clincher-button-to-file_20260729T093809Z.pcap
+File type:           Wireshark/tcpdump/... - pcap
+File encapsulation:  Ethernet
+File timestamp precision:  microseconds (6)
+Packet size limit:   file hdr: 262144 bytes
+Number of packets:   1958
+File size:           451 kB
+Data size:           420 kB
+Capture duration:    178.257859 seconds
+First packet time:   2026-07-29 09:38:09.969113
+Last packet time:    2026-07-29 09:41:08.226972
+Data byte rate:      2356 bytes/s
+Data bit rate:       18 kbps
+Average packet size: 214.57 bytes
+Average packet rate: 10 packets/s
+SHA256:              5950be7b76440c6c4b296a84f845618c4feec466e7cf88892741f2ba108d9ade
+SHA1:                efa18158e4d971d91dc2c4204173a06e2b0417aa

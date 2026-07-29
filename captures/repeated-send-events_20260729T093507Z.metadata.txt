@@ -1,0 +1,6 @@
+experiment=three physical Start/Send presses while continuously powered/reachable
+start_utc=2026-07-29T09:35:07+00:00
+capture_filter=src host 192.168.6.134 and udp port 2968
+planned_duration_seconds=240
+end_utc=2026-07-29T09:35:07+00:00
+timeout_exit_code=1

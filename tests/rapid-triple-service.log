@@ -1,0 +1,8 @@
+2026-07-29T11:20:45+00:00 es60w-lab python3[3936]: 2026-07-29T11:20:45Z level=INFO discovery_event=true event_source=udp/2968 source=192.168.6.134:2968 payload_bytes=102 transaction_id=8a4c
+2026-07-29T11:20:45+00:00 es60w-lab python3[3936]: 2026-07-29T11:20:45Z level=INFO candidate_button_event=true event_source=NetScanMonitor-agent transaction_id=8a4c
+2026-07-29T11:20:45+00:00 es60w-lab python3[3936]: 2026-07-29T11:20:45Z level=INFO debounce_decision=accept reason=new_transaction_while_reachable transaction_id=8a4c
+2026-07-29T11:20:45+00:00 es60w-lab python3[3936]: 2026-07-29T11:20:45Z level=INFO scan_scheduled event_source=udp/2968:NetScanMonitor-agent delay_seconds=0.75 output=/opt/es60w-lab/output/2026-07-29_11-20-45_ES-60W.png
+2026-07-29T11:20:46+00:00 es60w-lab python3[3936]: 2026-07-29T11:20:46Z level=INFO scan_started event_source=udp/2968:NetScanMonitor-agent device=epsonds:net:192.168.6.134 output=/opt/es60w-lab/output/2026-07-29_11-20-45_ES-60W.png attempt=1
+2026-07-29T11:20:53+00:00 es60w-lab python3[3936]: 2026-07-29T11:20:53Z level=INFO scan_completed output=/opt/es60w-lab/output/2026-07-29_11-20-45_ES-60W.png byte_count=11168399 elapsed_seconds=7.518 attempt=1 backend_warning='scanimage: rounded value of br-y from 355.6 to 355.6\nCorrupt JPEG data: found marker 0xd9 instead of RST2'
+2026-07-29T11:20:53+00:00 es60w-lab python3[3936]: 2026-07-29T11:20:53Z level=INFO discovery_event=true event_source=udp/2968 source=192.168.6.134:2968 payload_bytes=102 transaction_id=8a4c
+2026-07-29T11:20:53+00:00 es60w-lab python3[3936]: 2026-07-29T11:20:53Z level=INFO candidate_button_event=false debounce_decision=reject reason=duplicate_transaction transaction_id=8a4c seconds_since_candidate=7.521

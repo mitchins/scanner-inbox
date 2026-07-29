@@ -1,0 +1,6 @@
++   eth0 IPv4 EPSON ES-60W [5CF370524CB2]                   _scanner._tcp        local
+=   eth0 IPv4 EPSON ES-60W [5CF370524CB2]                   _scanner._tcp        local
+   hostname = [EPSON524CB2.local]
+   address = [192.168.6.134]
+   port = [1865]
+   txt = ["scannerAvailable=1" "adminurl=" "note=" "UUID=657B6602-B9AF-4d14-92E0-143EB2EE1B03" "mdl=ES-60W" "mfg=EPSON" "ty=EPSON ES-60W" "txtvers=1"]

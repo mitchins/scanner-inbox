@@ -1,0 +1,34 @@
+experiment=B awakening transition; user reported awakening scanner during capture
+start_utc=2026-07-29T09:25:55+00:00
+interface=eth0
+capture_filter=host 192.168.6.134 or port 5353 or port 137 or port 138 or port 1865
+planned_duration_seconds=120
+end_utc=2026-07-29T09:26:55+00:00
+timeout_exit_code=0
+410c5561962463bb4769a48c533fc46f945459ea0230b196884792b6c86310e0  captures/B-awakening-transition_20260729T092555Z.pcap
+File name:           captures/B-awakening-transition_20260729T092555Z.pcap
+File type:           Wireshark/tcpdump/... - pcap
+File encapsulation:  Ethernet
+File timestamp precision:  microseconds (6)
+Packet size limit:   file hdr: 262144 bytes
+Number of packets:   387
+File size:           112 kB
+Data size:           106 kB
+Capture duration:    53.038847 seconds
+First packet time:   2026-07-29 09:25:55.670713
+Last packet time:    2026-07-29 09:26:48.709560
+Data byte rate:      2011 bytes/s
+Data bit rate:       16 kbps
+Average packet size: 275.71 bytes
+Average packet rate: 7 packets/s
+SHA256:              410c5561962463bb4769a48c533fc46f945459ea0230b196884792b6c86310e0
+SHA1:                d74180bcdd345687bf10a57198f067fad3f2a090
+Strict time order:   True
+Number of interfaces in file: 1
+Interface #0 info:
+                     Encapsulation = Ethernet (1 - ether)
+                     Capture length = 262144
+                     Time precision = microseconds (6)
+                     Time ticks per second = 1000000
+                     Number of stat entries = 0
+                     Number of packets = 387

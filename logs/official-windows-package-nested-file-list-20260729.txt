@@ -1,0 +1,2 @@
+Not a supported Inno Setup installer!
+Done with 1 error.

@@ -1,0 +1,140 @@
+=== Scanner candidate UDP/2968 packets ===
+281	Jul 29, 2026 09:28:21.005041000 UTC	14.698255000	5c:f3:70:52:4c:b2	01:00:5e:7f:ff:fd	192.168.6.134	239.255.255.253	2968	2968	110	02060000662000000000dd080002656e0000001c736572766963653a4e65745363616e4d6f6e69746f722d6167656e740008504944203031364500285665722c436c69656e744e616d652c4950416464726573732c4576656e74506f72742c47726f75700000
+284	Jul 29, 2026 09:28:21.516929000 UTC	15.210143000	5c:f3:70:52:4c:b2	01:00:5e:7f:ff:fd	192.168.6.134	239.255.255.253	2968	2968	110	02060000662000000000dd080002656e0000001c736572766963653a4e65745363616e4d6f6e69746f722d6167656e740008504944203031364500285665722c436c69656e744e616d652c4950416464726573732c4576656e74506f72742c47726f75700000
+Frame 281: 144 bytes on wire (1152 bits), 144 bytes captured (1152 bits)
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Jul 29, 2026 09:28:21.005041000 UTC
+    UTC Arrival Time: Jul 29, 2026 09:28:21.005041000 UTC
+    Epoch Arrival Time: 1785317301.005041000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 0.551769000 seconds]
+    [Time delta from previous displayed frame: 0.000000000 seconds]
+    [Time since reference or first frame: 14.698255000 seconds]
+    Frame Number: 281
+    Frame Length: 144 bytes (1152 bits)
+    Capture Length: 144 bytes (1152 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:udp:data]
+Ethernet II, Src: CC&CTechnolo_52:4c:b2 (5c:f3:70:52:4c:b2), Dst: IPv4mcast_7f:ff:fd (01:00:5e:7f:ff:fd)
+    Destination: IPv4mcast_7f:ff:fd (01:00:5e:7f:ff:fd)
+        Address: IPv4mcast_7f:ff:fd (01:00:5e:7f:ff:fd)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...1 .... .... .... .... = IG bit: Group address (multicast/broadcast)
+    Source: CC&CTechnolo_52:4c:b2 (5c:f3:70:52:4c:b2)
+        Address: CC&CTechnolo_52:4c:b2 (5c:f3:70:52:4c:b2)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+Internet Protocol Version 4, Src: 192.168.6.134, Dst: 239.255.255.253
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 130
+    Identification: 0x0000 (0)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 255
+    Protocol: UDP (17)
+    Header Checksum: 0xc43e [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 192.168.6.134
+    Destination Address: 239.255.255.253
+User Datagram Protocol, Src Port: 2968, Dst Port: 2968
+    Source Port: 2968
+    Destination Port: 2968
+    Length: 110
+    Checksum: 0xa7e8 [unverified]
+    [Checksum Status: Unverified]
+    [Stream index: 31]
+    [Timestamps]
+        [Time since first frame: 0.000000000 seconds]
+        [Time since previous frame: 0.000000000 seconds]
+    UDP payload (102 bytes)
+Data (102 bytes)
+
+0000  02 06 00 00 66 20 00 00 00 00 dd 08 00 02 65 6e   ....f ........en
+0010  00 00 00 1c 73 65 72 76 69 63 65 3a 4e 65 74 53   ....service:NetS
+0020  63 61 6e 4d 6f 6e 69 74 6f 72 2d 61 67 65 6e 74   canMonitor-agent
+0030  00 08 50 49 44 20 30 31 36 45 00 28 56 65 72 2c   ..PID 016E.(Ver,
+0040  43 6c 69 65 6e 74 4e 61 6d 65 2c 49 50 41 64 64   ClientName,IPAdd
+0050  72 65 73 73 2c 45 76 65 6e 74 50 6f 72 74 2c 47   ress,EventPort,G
+0060  72 6f 75 70 00 00                                 roup..
+    Data: 02060000662000000000dd080002656e0000001c736572766963653a4e65745363616e4d6f6e69746f722d6167656e740008504944203031364500285665722c436c69656e744e616d652c4950416464726573732c4576656e74506f72742c47726f75700000
+    [Length: 102]
+
+Frame 284: 144 bytes on wire (1152 bits), 144 bytes captured (1152 bits)
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Jul 29, 2026 09:28:21.516929000 UTC
+    UTC Arrival Time: Jul 29, 2026 09:28:21.516929000 UTC
+    Epoch Arrival Time: 1785317301.516929000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 0.398597000 seconds]
+    [Time delta from previous displayed frame: 0.511888000 seconds]
+    [Time since reference or first frame: 15.210143000 seconds]
+    Frame Number: 284
+    Frame Length: 144 bytes (1152 bits)
+    Capture Length: 144 bytes (1152 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:udp:data]
+Ethernet II, Src: CC&CTechnolo_52:4c:b2 (5c:f3:70:52:4c:b2), Dst: IPv4mcast_7f:ff:fd (01:00:5e:7f:ff:fd)
+    Destination: IPv4mcast_7f:ff:fd (01:00:5e:7f:ff:fd)
+        Address: IPv4mcast_7f:ff:fd (01:00:5e:7f:ff:fd)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...1 .... .... .... .... = IG bit: Group address (multicast/broadcast)
+    Source: CC&CTechnolo_52:4c:b2 (5c:f3:70:52:4c:b2)
+        Address: CC&CTechnolo_52:4c:b2 (5c:f3:70:52:4c:b2)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+Internet Protocol Version 4, Src: 192.168.6.134, Dst: 239.255.255.253
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 130
+    Identification: 0x0000 (0)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 255
+    Protocol: UDP (17)
+    Header Checksum: 0xc43e [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 192.168.6.134
+    Destination Address: 239.255.255.253
+User Datagram Protocol, Src Port: 2968, Dst Port: 2968
+    Source Port: 2968
+    Destination Port: 2968
+    Length: 110
+    Checksum: 0xa7e8 [unverified]
+    [Checksum Status: Unverified]
+    [Stream index: 31]
+    [Timestamps]
+        [Time since first frame: 0.511888000 seconds]
+        [Time since previous frame: 0.511888000 seconds]
+    UDP payload (102 bytes)
+Data (102 bytes)
+
+0000  02 06 00 00 66 20 00 00 00 00 dd 08 00 02 65 6e   ....f ........en
+0010  00 00 00 1c 73 65 72 76 69 63 65 3a 4e 65 74 53   ....service:NetS
+0020  63 61 6e 4d 6f 6e 69 74 6f 72 2d 61 67 65 6e 74   canMonitor-agent
+0030  00 08 50 49 44 20 30 31 36 45 00 28 56 65 72 2c   ..PID 016E.(Ver,
+0040  43 6c 69 65 6e 74 4e 61 6d 65 2c 49 50 41 64 64   ClientName,IPAdd
+0050  72 65 73 73 2c 45 76 65 6e 74 50 6f 72 74 2c 47   ress,EventPort,G
+0060  72 6f 75 70 00 00                                 roup..
+    Data: 02060000662000000000dd080002656e0000001c736572766963653a4e65745363616e4d6f6e69746f722d6167656e740008504944203031364500285665722c436c69656e744e616d652c4950416464726573732c4576656e74506f72742c47726f75700000
+    [Length: 102]
+
+=== Scanner ARP ===
+361	Jul 29, 2026 09:28:45.560872000 UTC	39.254086000	1	5c:f3:70:52:4c:b2	192.168.6.134	00:00:00:00:00:00	192.168.1.1
+=== Scanner NetBIOS ===

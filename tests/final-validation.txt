@@ -1,0 +1,58 @@
+validation_utc=2026-07-29T11:23:12+00:00
+git_head_before_final_commit=7817c1fc1b4656882fae1e269ef048714644e9dc
+=== code ===
+test_button_marker_is_specific (test_listener.ListenerConstantsTest.test_button_marker_is_specific) ... ok
+test_output_name_contract (test_listener.ListenerConstantsTest.test_output_name_contract) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK
+=== unit ===
+0aeb83003c1ae97985b8fd6134982f3231ef68f8b356b2fa68bc5566fa4f0d54  config/es60w-listener.service
+0aeb83003c1ae97985b8fd6134982f3231ef68f8b356b2fa68bc5566fa4f0d54  /etc/systemd/system/es60w-listener.service
+enabled
+active
+   3936 es60w    es60w    Ss         03:02 /usr/bin/python3 /opt/es60w-lab/src/es60w_listener.py
+=== outputs ===
+png_count=17
+zero_byte_count=0
+partial_count=0
+output/2026-07-29_09-42-33_ES-60W.png:  PNG image data, 2544 x 4193, 8-bit/color RGB, non-interlaced
+output/2026-07-29_09-47-40_ES-60W.png:  PNG image data, 2544 x 4193, 8-bit/color RGB, non-interlaced
+output/2026-07-29_09-49-52_ES-60W.png:  PNG image data, 2544 x 4193, 8-bit/color RGB, non-interlaced
+output/2026-07-29_09-54-21_ES-60W.png:  PNG image data, 2544 x 4193, 8-bit/color RGB, non-interlaced
+output/2026-07-29_09-57-20_ES-60W.png:  PNG image data, 2544 x 4193, 8-bit/color RGB, non-interlaced
+output/2026-07-29_09-57-36_ES-60W.png:  PNG image data, 2544 x 4193, 8-bit/color RGB, non-interlaced
+output/2026-07-29_09-57-46_ES-60W.png:  PNG image data, 2544 x 4193, 8-bit/color RGB, non-interlaced
+output/2026-07-29_09-57-56_ES-60W.png:  PNG image data, 2544 x 4193, 8-bit/color RGB, non-interlaced
+output/2026-07-29_09-58-08_ES-60W.png:  PNG image data, 2544 x 4193, 8-bit/color RGB, non-interlaced
+output/2026-07-29_09-58-36_ES-60W.png:  PNG image data, 2544 x 4193, 8-bit/color RGB, non-interlaced
+output/2026-07-29_09-58-53_ES-60W.png:  PNG image data, 2544 x 4193, 8-bit/color RGB, non-interlaced
+output/2026-07-29_09-59-04_ES-60W.png:  PNG image data, 2544 x 4193, 8-bit/color RGB, non-interlaced
+output/2026-07-29_09-59-13_ES-60W.png:  PNG image data, 2544 x 4193, 8-bit/color RGB, non-interlaced
+output/2026-07-29_11-14-56_ES-60W.png:  PNG image data, 2544 x 4193, 8-bit/color RGB, non-interlaced
+output/2026-07-29_11-18-46_ES-60W.png:  PNG image data, 2544 x 4193, 8-bit/color RGB, non-interlaced
+output/2026-07-29_11-20-45_ES-60W.png:  PNG image data, 2544 x 4193, 8-bit/color RGB, non-interlaced
+output/manual-test-20260729-093100.png: PNG image data, 2544 x 4193, 8-bit/color RGB, non-interlaced
+=== post-mitigation failures ===
+failure_count=0
+=== status ===
+● es60w-listener.service - Epson ES-60W physical-button scan receiver
+     Loaded: loaded (/etc/systemd/system/es60w-listener.service; enabled; preset: enabled)
+     Active: active (running) since Wed 2026-07-29 11:20:10 UTC; 3min 2s ago
+       Docs: file:/opt/es60w-lab/README.md
+   Main PID: 3936 (python3)
+      Tasks: 1 (limit: 4653)
+     Memory: 18.2M (peak: 50.6M)
+        CPU: 1.597s
+     CGroup: /system.slice/es60w-listener.service
+             └─3936 /usr/bin/python3 /opt/es60w-lab/src/es60w_listener.py
+
+Jul 29 11:20:45 es60w-lab python3[3936]: 2026-07-29T11:20:45Z level=INFO discovery_event=true event_source=udp/2968 source=192.168.6.134:2968 payload_bytes=102 transaction_id=8a4c
+Jul 29 11:20:45 es60w-lab python3[3936]: 2026-07-29T11:20:45Z level=INFO candidate_button_event=true event_source=NetScanMonitor-agent transaction_id=8a4c
+Jul 29 11:20:45 es60w-lab python3[3936]: 2026-07-29T11:20:45Z level=INFO debounce_decision=accept reason=new_transaction_while_reachable transaction_id=8a4c
+Jul 29 11:20:45 es60w-lab python3[3936]: 2026-07-29T11:20:45Z level=INFO scan_scheduled event_source=udp/2968:NetScanMonitor-agent delay_seconds=0.75 output=/opt/es60w-lab/output/2026-07-29_11-20-45_ES-60W.png
+Jul 29 11:20:46 es60w-lab python3[3936]: 2026-07-29T11:20:46Z level=INFO scan_started event_source=udp/2968:NetScanMonitor-agent device=epsonds:net:192.168.6.134 output=/opt/es60w-lab/output/2026-07-29_11-20-45_ES-60W.png attempt=1
+Jul 29 11:20:53 es60w-lab python3[3936]: 2026-07-29T11:20:53Z level=INFO scan_completed output=/opt/es60w-lab/output/2026-07-29_11-20-45_ES-60W.png byte_count=11168399 elapsed_seconds=7.518 attempt=1 backend_warning='scanimage: rounded value of br-y from 355.6 to 355.6\nCorrupt JPEG data: found marker 0xd9 instead of RST2'
+Jul 29 11:20:53 es60w-lab python3[3936]: 2026-07-29T11:20:53Z level=INFO discovery_event=true event_source=udp/2968 source=192.168.6.134:2968 payload_bytes=102 transaction_id=8a4c

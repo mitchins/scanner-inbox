@@ -1,0 +1,23 @@
+experiment=third controlled scanner off/on cycle, power-only control, post-cycle scan
+start_utc=2026-07-29T11:15:39+00:00
+planned_duration_seconds=420
+end_utc=2026-07-29T11:19:15+00:00
+timeout_exit_code=0
+e3c36c39dedaddb69bd9f8c2ccd4d6f3b83a0e6962749bb2e619b57ff2a3b8dd  /opt/es60w-lab/captures/power-cycle-3_20260729T111539Z.pcap
+File name:           /opt/es60w-lab/captures/power-cycle-3_20260729T111539Z.pcap
+File type:           Wireshark/tcpdump/... - pcap
+File encapsulation:  Ethernet
+File timestamp precision:  microseconds (6)
+Packet size limit:   file hdr: 262144 bytes
+Number of packets:   3385
+File size:           2702 kB
+Data size:           2648 kB
+Capture duration:    215.577520 seconds
+First packet time:   2026-07-29 11:15:39.237756
+Last packet time:    2026-07-29 11:19:14.815276
+Data byte rate:      12 kBps
+Data bit rate:       98 kbps
+Average packet size: 782.40 bytes
+Average packet rate: 15 packets/s
+SHA256:              e3c36c39dedaddb69bd9f8c2ccd4d6f3b83a0e6962749bb2e619b57ff2a3b8dd
+SHA1:                d0eddbd5593dcddf833a4af57bddcdee039667a9

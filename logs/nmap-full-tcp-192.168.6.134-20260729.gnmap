@@ -1,0 +1,4 @@
+# Nmap 7.94SVN scan initiated Wed Jul 29 09:21:45 2026 as: nmap -Pn -sT -T3 --max-retries 2 -p- --reason -oA logs/nmap-full-tcp-192.168.6.134-20260729 192.168.6.134
+Host: 192.168.6.134 (EPSON524CB2.local)	Status: Up
+Host: 192.168.6.134 (EPSON524CB2.local)	Ports: 80/open/tcp//http///, 1865/open/tcp//entp///, 3911/open/tcp//prnstatus///, 53048/open/tcp/////
+# Nmap done at Wed Jul 29 09:22:17 2026 -- 1 IP address (1 host up) scanned in 32.07 seconds

@@ -1,0 +1,11 @@
+=== ASCII matches ===
+TSetNameEvent
+TReferenceNameEvent
+TFindMethodInstanceEvent
+TFindComponentInstanceEvent
+TFindMethodNameEvent
+TObservers.TCanObserveEvent
+TAsyncProcedureEvent
+TAsyncConstArrayProcedureEvent
+CreateEventW
+=== UTF-16LE matches ===

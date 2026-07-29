@@ -1,0 +1,4 @@
+# Nmap 7.94SVN scan initiated Wed Jul 29 09:22:32 2026 as: nmap -Pn -sT -sV --version-all --reason -p 80,1865,3911,53048 -oA logs/nmap-services-192.168.6.134-20260729 192.168.6.134
+Host: 192.168.6.134 (EPSON524CB2.local)	Status: Up
+Host: 192.168.6.134 (EPSON524CB2.local)	Ports: 80/open/tcp//http//Mongoose|6.5/, 1865/open/tcp//entp?///, 3911/open/tcp//soap//gSOAP 2.8/, 53048/open/tcp//soap//gSOAP 2.8/
+# Nmap done at Wed Jul 29 09:25:21 2026 -- 1 IP address (1 host up) scanned in 169.41 seconds

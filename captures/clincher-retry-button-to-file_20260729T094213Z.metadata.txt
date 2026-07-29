@@ -1,0 +1,23 @@
+experiment=fresh retry physical button to file through stateful Linux listener
+start_utc=2026-07-29T09:42:13+00:00
+planned_duration_seconds=300
+end_utc=2026-07-29T09:43:08+00:00
+timeout_exit_code=0
+ffde7a38569514b4a2522c4859d84c5d843134bef514bf93f0d8518b7dd3cc43  /opt/es60w-lab/captures/clincher-retry-button-to-file_20260729T094213Z.pcap
+File name:           /opt/es60w-lab/captures/clincher-retry-button-to-file_20260729T094213Z.pcap
+File type:           Wireshark/tcpdump/... - pcap
+File encapsulation:  Ethernet
+File timestamp precision:  microseconds (6)
+Packet size limit:   file hdr: 262144 bytes
+Number of packets:   2963
+File size:           2545 kB
+Data size:           2497 kB
+Capture duration:    52.518327 seconds
+First packet time:   2026-07-29 09:42:14.615506
+Last packet time:    2026-07-29 09:43:07.133833
+Data byte rate:      47 kBps
+Data bit rate:       380 kbps
+Average packet size: 843.02 bytes
+Average packet rate: 56 packets/s
+SHA256:              ffde7a38569514b4a2522c4859d84c5d843134bef514bf93f0d8518b7dd3cc43
+SHA1:                a55937db323ee469e8cf23e1cbf7291bc5f370b8

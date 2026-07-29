@@ -1,0 +1,70 @@
+# Nmap 7.94SVN scan initiated Wed Jul 29 09:22:32 2026 as: nmap -Pn -sT -sV --version-all --reason -p 80,1865,3911,53048 -oA logs/nmap-services-192.168.6.134-20260729 192.168.6.134
+Nmap scan report for EPSON524CB2.local (192.168.6.134)
+Host is up, received user-set (0.0039s latency).
+
+PORT      STATE SERVICE REASON  VERSION
+80/tcp    open  http    syn-ack Mongoose/6.5
+1865/tcp  open  entp?   syn-ack
+3911/tcp  open  soap    syn-ack gSOAP 2.8
+53048/tcp open  soap    syn-ack gSOAP 2.8
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port80-TCP:V=7.94SVN%I=9%D=7/29%Time=6A69C65E%P=x86_64-pc-linux-gnu%r(G
+SF:etRequest,70,"HTTP/1\.1\x20404\x20Not\x20Found\r\nServer:\x20Mongoose/6
+SF:\.5\r\nContent-Type:\x20text/plain\r\nConnection:\x20close\r\nContent-L
+SF:ength:\x200\r\n\r\n")%r(HTTPOptions,70,"HTTP/1\.1\x20404\x20Not\x20Foun
+SF:d\r\nServer:\x20Mongoose/6\.5\r\nContent-Type:\x20text/plain\r\nConnect
+SF:ion:\x20close\r\nContent-Length:\x200\r\n\r\n")%r(RTSPRequest,70,"HTTP/
+SF:1\.1\x20404\x20Not\x20Found\r\nServer:\x20Mongoose/6\.5\r\nContent-Type
+SF::\x20text/plain\r\nConnection:\x20close\r\nContent-Length:\x200\r\n\r\n
+SF:")%r(FourOhFourRequest,70,"HTTP/1\.1\x20404\x20Not\x20Found\r\nServer:\
+SF:x20Mongoose/6\.5\r\nContent-Type:\x20text/plain\r\nConnection:\x20close
+SF:\r\nContent-Length:\x200\r\n\r\n")%r(SIPOptions,69,"HTTP/1\.1\x20400\x2
+SF:0OK\r\nServer:\x20Mongoose/6\.5\r\nContent-Type:\x20text/plain\r\nConne
+SF:ction:\x20close\r\nContent-Length:\x200\r\n\r\n")%r(OfficeScan,70,"HTTP
+SF:/1\.1\x20404\x20Not\x20Found\r\nServer:\x20Mongoose/6\.5\r\nContent-Typ
+SF:e:\x20text/plain\r\nConnection:\x20close\r\nContent-Length:\x200\r\n\r\
+SF:n")%r(apple-iphoto,70,"HTTP/1\.1\x20404\x20Not\x20Found\r\nServer:\x20M
+SF:ongoose/6\.5\r\nContent-Type:\x20text/plain\r\nConnection:\x20close\r\n
+SF:Content-Length:\x200\r\n\r\n")%r(metasploit-msgrpc,70,"HTTP/1\.1\x20404
+SF:\x20Not\x20Found\r\nServer:\x20Mongoose/6\.5\r\nContent-Type:\x20text/p
+SF:lain\r\nConnection:\x20close\r\nContent-Length:\x200\r\n\r\n")%r(hazelc
+SF:ast-http,70,"HTTP/1\.1\x20404\x20Not\x20Found\r\nServer:\x20Mongoose/6\
+SF:.5\r\nContent-Type:\x20text/plain\r\nConnection:\x20close\r\nContent-Le
+SF:ngth:\x200\r\n\r\n")%r(docker,70,"HTTP/1\.1\x20404\x20Not\x20Found\r\nS
+SF:erver:\x20Mongoose/6\.5\r\nContent-Type:\x20text/plain\r\nConnection:\x
+SF:20close\r\nContent-Length:\x200\r\n\r\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port1865-TCP:V=7.94SVN%I=9%D=7/29%Time=6A69C65E%P=x86_64-pc-linux-gnu%r
+SF:(NULL,11,"IS\x80\0\x10\x0c\0\0\0\x05\0\0\x01\x04\0\0\0")%r(GenericLines
+SF:,11,"IS\x80\0\x10\x0c\0\0\0\x05\0\0\x01\x04\0\0\0")%r(Hello,11,"IS\x80\
+SF:0\x10\x0c\0\0\0\x05\0\0\x01\x04\0\0\0")%r(Help,11,"IS\x80\0\x10\x0c\0\0
+SF:\0\x05\0\0\x01\x04\0\0\0")%r(X11Probe,11,"IS\x80\0\x10\x0c\0\0\0\x05\0\
+SF:0\x01\x04\0\0\0")%r(LPDString,11,"IS\x80\0\x10\x0c\0\0\0\x05\0\0\x01\x0
+SF:4\0\0\0")%r(TerminalServer,11,"IS\x80\0\x10\x0c\0\0\0\x05\0\0\x01\x04\0
+SF:\0\0")%r(JavaRMI,11,"IS\x80\0\x10\x0c\0\0\0\x05\0\0\x01\x04\0\0\0")%r(R
+SF:admin,11,"IS\x80\0\x10\x0c\0\0\0\x05\0\0\x01\x04\0\0\0")%r(NessusTPv12,
+SF:11,"IS\x80\0\x10\x0c\0\0\0\x05\0\0\x01\x04\0\0\0")%r(NessusTPv11,11,"IS
+SF:\x80\0\x10\x0c\0\0\0\x05\0\0\x01\x04\0\0\0")%r(NessusTPv10,11,"IS\x80\0
+SF:\x10\x0c\0\0\0\x05\0\0\x01\x04\0\0\0")%r(mydoom,11,"IS\x80\0\x10\x0c\0\
+SF:0\0\x05\0\0\x01\x04\0\0\0")%r(Verifier,11,"IS\x80\0\x10\x0c\0\0\0\x05\0
+SF:\0\x01\x04\0\0\0")%r(VerifierAdvanced,11,"IS\x80\0\x10\x0c\0\0\0\x05\0\
+SF:0\x01\x04\0\0\0")%r(HELP4STOMP,11,"IS\x80\0\x10\x0c\0\0\0\x05\0\0\x01\x
+SF:04\0\0\0")%r(Memcache,11,"IS\x80\0\x10\x0c\0\0\0\x05\0\0\x01\x04\0\0\0"
+SF:)%r(beast2,11,"IS\x80\0\x10\x0c\0\0\0\x05\0\0\x01\x04\0\0\0")%r(ajp,11,
+SF:"IS\x80\0\x10\x0c\0\0\0\x05\0\0\x01\x04\0\0\0")%r(dominoconsole,11,"IS\
+SF:x80\0\x10\x0c\0\0\0\x05\0\0\x01\x04\0\0\0")%r(riak-pbc,11,"IS\x80\0\x10
+SF:\x0c\0\0\0\x05\0\0\x01\x04\0\0\0")%r(tarantool,11,"IS\x80\0\x10\x0c\0\0
+SF:\0\x05\0\0\x01\x04\0\0\0")%r(epmd,11,"IS\x80\0\x10\x0c\0\0\0\x05\0\0\x0
+SF:1\x04\0\0\0")%r(vp3,11,"IS\x80\0\x10\x0c\0\0\0\x05\0\0\x01\x04\0\0\0")%
+SF:r(kumo-server,11,"IS\x80\0\x10\x0c\0\0\0\x05\0\0\x01\x04\0\0\0")%r(mine
+SF:craft-ping,11,"IS\x80\0\x10\x0c\0\0\0\x05\0\0\x01\x04\0\0\0")%r(teamspe
+SF:ak-tcpquery-ver,11,"IS\x80\0\x10\x0c\0\0\0\x05\0\0\x01\x04\0\0\0")%r(pr
+SF:oconos,11,"IS\x80\0\x10\x0c\0\0\0\x05\0\0\x01\x04\0\0\0")%r(VersionRequ
+SF:est,11,"IS\x80\0\x10\x0c\0\0\0\x05\0\0\x01\x04\0\0\0")%r(NoMachine,11,"
+SF:IS\x80\0\x10\x0c\0\0\0\x05\0\0\x01\x04\0\0\0")%r(rotctl,11,"IS\x80\0\x1
+SF:0\x0c\0\0\0\x05\0\0\x01\x04\0\0\0")%r(piholeVersion,11,"IS\x80\0\x10\x0
+SF:c\0\0\0\x05\0\0\x01\x04\0\0\0");
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Wed Jul 29 09:25:21 2026 -- 1 IP address (1 host up) scanned in 169.41 seconds

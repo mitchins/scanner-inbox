@@ -1,0 +1,54 @@
+TRACE captures/A-idle-no-button_20260729T092717Z.pcap
+
+===================================================================
+Protocol Hierarchy Statistics
+Filter: 
+
+eth                                      frames:134 bytes:66197
+  ip                                     frames:68 bytes:32394
+    udp                                  frames:68 bytes:32394
+      mdns                               frames:68 bytes:32394
+  ipv6                                   frames:66 bytes:33803
+    udp                                  frames:66 bytes:33803
+      mdns                               frames:66 bytes:33803
+===================================================================
+Scanner-sourced protocol counts
+      1 MDNS
+Scanner-sourced destination and ports
+0.000000000	01:00:5e:00:00:fb	224.0.0.251	5353	5353			MDNS
+
+TRACE captures/E-physical-button_20260729T092806Z.pcap
+
+===================================================================
+Protocol Hierarchy Statistics
+Filter: 
+
+eth                                      frames:482 bytes:155288
+  ip                                     frames:184 bytes:67966
+    udp                                  frames:184 bytes:67966
+      mdns                               frames:181 bytes:67586
+      data                               frames:2 bytes:288
+      nbns                               frames:1 bytes:92
+  ipv6                                   frames:132 bytes:63474
+    udp                                  frames:132 bytes:63474
+      mdns                               frames:132 bytes:63474
+  vlan                                   frames:165 bytes:23788
+    ip                                   frames:141 bytes:17484
+      udp                                frames:141 bytes:17484
+        mdns                             frames:140 bytes:17388
+        nbns                             frames:1 bytes:96
+    ipv6                                 frames:24 bytes:6304
+      udp                                frames:24 bytes:6304
+        mdns                             frames:24 bytes:6304
+  arp                                    frames:1 bytes:60
+===================================================================
+Scanner-sourced protocol counts
+      1 ARP
+      1 MDNS
+      2 UDP
+Scanner-sourced destination and ports
+14.698255000	01:00:5e:7f:ff:fd	239.255.255.253	2968	2968			UDP
+15.210143000	01:00:5e:7f:ff:fd	239.255.255.253	2968	2968			UDP
+39.254086000	ff:ff:ff:ff:ff:ff						ARP
+55.126597000	01:00:5e:00:00:fb	224.0.0.251	5353	5353			MDNS
+

@@ -1,0 +1,30 @@
+Output format is not set, using pnm as a default.
+
+All options specific to device `epsonds:net:192.168.6.134':
+  Standard:
+    --source ADF Front [ADF Front]
+        Selects the scan source (such as a document-feeder).
+    --mode Lineart|Gray|Color [Color]
+        Selects the scan mode (e.g., lineart, monochrome, or color).
+    --depth 1|8bit [8]
+        Number of bits per sample, typical values are 1 for "line-art" and 8
+        for multibit scans.
+    --resolution 200|300|400|600dpi [200]
+        Sets the resolution of the scanned image.
+    -l 0..215.9mm [0]
+        Top-left x position of scan area.
+    -t 0..355.6mm [0]
+        Top-left y position of scan area.
+    -x 0..215.9mm [215.9]
+        Width of scan-area.
+    -y 0..355.6mm [355.6]
+        Height of scan-area.
+    --eject [inactive]
+        Eject the sheet in the ADF
+    --load [inactive]
+        Load a sheet in the ADF
+    --adf-skew[=(yes|no)] [inactive]
+        Enables ADF skew correction
+    --adf-crp[=(yes|no)] [inactive]
+        Enables ADF auto cropping
+

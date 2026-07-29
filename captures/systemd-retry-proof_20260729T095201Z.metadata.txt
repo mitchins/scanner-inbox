@@ -1,0 +1,23 @@
+experiment=single physical press with delayed start and zero-byte automatic retry
+start_utc=2026-07-29T09:52:01+00:00
+planned_duration_seconds=180
+end_utc=2026-07-29T09:54:49+00:00
+timeout_exit_code=0
+36ff60dbb8c3bdf26d2de2ac47e95280f098d3ceefa0bde3993081cd95ff9cd1  /opt/es60w-lab/captures/systemd-retry-proof_20260729T095201Z.pcap
+File name:           /opt/es60w-lab/captures/systemd-retry-proof_20260729T095201Z.pcap
+File type:           Wireshark/tcpdump/... - pcap
+File encapsulation:  Ethernet
+File timestamp precision:  microseconds (6)
+Packet size limit:   file hdr: 262144 bytes
+Number of packets:   3059
+File size:           2489 kB
+Data size:           2440 kB
+Capture duration:    164.172942 seconds
+First packet time:   2026-07-29 09:52:03.670007
+Last packet time:    2026-07-29 09:54:47.842949
+Data byte rate:      14 kBps
+Data bit rate:       118 kbps
+Average packet size: 797.96 bytes
+Average packet rate: 18 packets/s
+SHA256:              36ff60dbb8c3bdf26d2de2ac47e95280f098d3ceefa0bde3993081cd95ff9cd1
+SHA1:                a45d931740296d5923a4fc109b132cc3a7f72f0e

@@ -1,0 +1,23 @@
+experiment=systemd service physical button to file
+start_utc=2026-07-29T09:49:00+00:00
+planned_duration_seconds=180
+end_utc=2026-07-29T09:50:50+00:00
+timeout_exit_code=0
+7160b5849cf2341c8d43e956cb9280397d335dfc9a58958826fe5a326ced21fd  /opt/es60w-lab/captures/systemd-button-proof_20260729T094900Z.pcap
+File name:           /opt/es60w-lab/captures/systemd-button-proof_20260729T094900Z.pcap
+File type:           Wireshark/tcpdump/... - pcap
+File encapsulation:  Ethernet
+File timestamp precision:  microseconds (6)
+Packet size limit:   file hdr: 262144 bytes
+Number of packets:   2815
+File size:           2471 kB
+Data size:           2426 kB
+Capture duration:    106.653848 seconds
+First packet time:   2026-07-29 09:49:01.397671
+Last packet time:    2026-07-29 09:50:48.051519
+Data byte rate:      22 kBps
+Data bit rate:       182 kbps
+Average packet size: 861.95 bytes
+Average packet rate: 26 packets/s
+SHA256:              7160b5849cf2341c8d43e956cb9280397d335dfc9a58958826fe5a326ced21fd
+SHA1:                4ea0db98a217dd0958f0026a306741ad5a7595af

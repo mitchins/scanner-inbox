@@ -1,0 +1,7 @@
+Extracting "EPSON Driver Package" - setup data version 6.1.0 (unicode)
+ - "code$MyTemp/cm$MDL/ES60W_EScan2_67810_AM.exe"
+ - "code$MyTemp/cm$MDL/ESP_Promotion/Final_Escan2.html"
+ - "code$MyTemp/cm$MDL/ESP_Promotion/Final_fr_Escan2.html"
+ - "code$MyTemp/cm$MDL/ESP_Promotion/ShowDlg.exe"
+ - "code$MyTemp/cm$MDL/ESP_Promotion/ShowDlg.ini"
+Done.
