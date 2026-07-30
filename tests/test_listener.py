@@ -67,7 +67,9 @@ class ListenerConfigurationTest(unittest.TestCase):
             ),
         )
 
-    def test_partial_output_is_hidden_and_never_has_final_extension(self) -> None:
+    def test_partial_output_is_hidden_and_never_has_final_extension(
+        self,
+    ) -> None:
         final_path = pathlib.Path("/data/raw/document.png")
         self.assertEqual(
             LISTENER.partial_output_path(final_path),
@@ -96,7 +98,9 @@ class ListenerConfigurationTest(unittest.TestCase):
             events: list[str] = []
 
             def checked_replace(source: object, destination: object) -> None:
-                self.assertEqual(source, output_directory / ".document.png.part")
+                self.assertEqual(
+                    source, output_directory / ".document.png.part"
+                )
                 self.assertEqual(destination, final_path)
                 self.assertFalse(final_path.exists())
                 events.append("replace")
@@ -108,7 +112,9 @@ class ListenerConfigurationTest(unittest.TestCase):
 
             LISTENER.reset_runtime_state()
             with (
-                mock.patch.object(LISTENER, "output_path", return_value=final_path),
+                mock.patch.object(
+                    LISTENER, "output_path", return_value=final_path
+                ),
                 mock.patch.object(
                     LISTENER.subprocess, "run", side_effect=fake_scanimage
                 ),
@@ -122,7 +128,9 @@ class ListenerConfigurationTest(unittest.TestCase):
                 LISTENER.acquire_one_page(settings, "test")
 
             self.assertEqual(final_path.read_bytes(), b"complete scan")
-            self.assertFalse((output_directory / ".document.png.part").exists())
+            self.assertFalse(
+                (output_directory / ".document.png.part").exists()
+            )
             self.assertEqual(events, ["fsync", "replace", "fsync"])
 
     def test_scan_command_uses_settings(self) -> None:

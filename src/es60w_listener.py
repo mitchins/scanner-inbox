@@ -58,7 +58,9 @@ def _ipv4(value: str, name: str, *, multicast: bool = False) -> str:
     try:
         address = ipaddress.IPv4Address(value)
     except ipaddress.AddressValueError as error:
-        raise ValueError(f"{name} must be an IPv4 address, got {value!r}") from error
+        raise ValueError(
+            f"{name} must be an IPv4 address, got {value!r}"
+        ) from error
     if multicast and not address.is_multicast:
         raise ValueError(f"{name} must be a multicast IPv4 address")
     return str(address)
@@ -278,7 +280,7 @@ def partial_output_path(final_path: Path) -> Path:
 
 
 def fsync_directory(directory: Path) -> None:
-    """Persist a rename in *directory* before reporting the scan as complete."""
+    """Persist a rename in *directory* before reporting completion."""
     flags = os.O_RDONLY | getattr(os, "O_DIRECTORY", 0)
     descriptor = os.open(directory, flags)
     try:
@@ -354,7 +356,8 @@ def acquire_one_page(settings: Settings, event_source: str) -> None:
                 os.replace(partial_path, final_path)
                 fsync_directory(settings.raw_scan)
                 LOGGER.info(
-                    "scan_completed output=%s byte_count=%d elapsed_seconds=%.3f "
+                    "scan_completed output=%s byte_count=%d "
+                    "elapsed_seconds=%.3f "
                     "attempt=%d publication=atomic_rename backend_warning=%r",
                     final_path,
                     byte_count,
@@ -370,7 +373,8 @@ def acquire_one_page(settings: Settings, event_source: str) -> None:
             ):
                 partial_path.unlink(missing_ok=True)
                 LOGGER.warning(
-                    "failure=transient_zero_byte_scan returncode=%d attempt=%d "
+                    "failure=transient_zero_byte_scan returncode=%d "
+                    "attempt=%d "
                     "elapsed_seconds=%.3f retry_reason=zero_byte_device_io "
                     "retry_delay_seconds=%.1f stderr=%r",
                     result.returncode,
@@ -383,7 +387,8 @@ def acquire_one_page(settings: Settings, event_source: str) -> None:
                 continue
             LOGGER.error(
                 "failure=scan_failed returncode=%d bytes=%d attempt=%d "
-                "elapsed_seconds=%.3f retry_reason=next_button_event stderr=%r",
+                "elapsed_seconds=%.3f retry_reason=next_button_event "
+                "stderr=%r",
                 result.returncode,
                 byte_count,
                 attempt,
@@ -395,7 +400,8 @@ def acquire_one_page(settings: Settings, event_source: str) -> None:
     except subprocess.TimeoutExpired as error:
         partial_path.unlink(missing_ok=True)
         LOGGER.error(
-            "failure=scan_timeout elapsed_seconds=%.3f retry_reason=next_button_event "
+            "failure=scan_timeout elapsed_seconds=%.3f "
+            "retry_reason=next_button_event "
             "detail=%r",
             time.monotonic() - started,
             error,
@@ -403,7 +409,8 @@ def acquire_one_page(settings: Settings, event_source: str) -> None:
     except OSError as error:
         partial_path.unlink(missing_ok=True)
         LOGGER.exception(
-            "failure=scan_os_error elapsed_seconds=%.3f retry_reason=next_button_event "
+            "failure=scan_os_error elapsed_seconds=%.3f "
+            "retry_reason=next_button_event "
             "detail=%r",
             time.monotonic() - started,
             error,
@@ -497,7 +504,8 @@ def main(environ: Mapping[str, str] | None = None) -> int:
                 )
                 if transaction in recent_transactions:
                     LOGGER.info(
-                        "candidate_button_event=false debounce_decision=reject "
+                        "candidate_button_event=false "
+                        "debounce_decision=reject "
                         "reason=duplicate_transaction transaction_id=%s "
                         "seconds_since_candidate=%.3f",
                         transaction_id,
@@ -508,7 +516,8 @@ def main(environ: Mapping[str, str] | None = None) -> int:
                 since_scan = now - last_successful_scan_completed
                 if since_scan < settings.post_scan_suppression_seconds:
                     LOGGER.info(
-                        "candidate_button_event=false debounce_decision=reject "
+                        "candidate_button_event=false "
+                        "debounce_decision=reject "
                         "reason=post_scan_rapid_repeat transaction_id=%s "
                         "seconds_since_scan=%.3f window_seconds=%.1f",
                         transaction_id,
@@ -522,7 +531,8 @@ def main(environ: Mapping[str, str] | None = None) -> int:
                     transaction_id,
                 )
                 LOGGER.info(
-                    "debounce_decision=accept reason=new_transaction_while_reachable "
+                    "debounce_decision=accept "
+                    "reason=new_transaction_while_reachable "
                     "transaction_id=%s",
                     transaction_id,
                 )
