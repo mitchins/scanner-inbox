@@ -101,6 +101,19 @@ or network failure: button events still arrive, but acquisition fails with a
 device I/O error or a timed-out transfer. Stop the competing software, then
 retry with one sheet.
 
+### How are multi-page documents handled?
+
+They are not grouped by this service. One physical-button transaction starts
+one `scanimage` invocation and publishes one raw PNG. The Epson UDP transaction
+ID is used only to reject duplicate button packets; it is not a document
+session or page-sequence identifier.
+
+The next stage must treat every published PNG as one independent raw page. Do
+not merge nearby files based only on their timestamps: two pages close together
+may be two different documents. If multi-page documents are needed later, use
+an explicit batch-capable scanner, a deliberate "finish document" action, or a
+separate intake queue that lets a person group pages before OCR/Paperless.
+
 ## Notes and evidence
 
 This repository also retains the working notes and test evidence that got the
