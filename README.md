@@ -114,6 +114,21 @@ may be two different documents. If multi-page documents are needed later, use
 an explicit batch-capable scanner, a deliberate "finish document" action, or a
 separate intake queue that lets a person group pages before OCR/Paperless.
 
+### How do I make A4 the default scan size?
+
+Set these variables in the listener service and recreate it:
+
+```yaml
+ES60W_PAGE_WIDTH_MM: "210"
+ES60W_PAGE_HEIGHT_MM: "297"
+```
+
+The default canvas is 215.9 × 355.6 mm (US legal), which deliberately leaves
+room around smaller paper. A4 is the right default when all expected sheets
+are Australian A4. Keep the larger default if you expect legal-sized sheets,
+receipts, or other material that may extend beyond A4, since the listener does
+not crop raw captures.
+
 ## Notes and evidence
 
 This repository also retains the working notes and test evidence that got the
