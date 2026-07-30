@@ -264,12 +264,27 @@ def update_reachability(settings: Settings, force: bool = False) -> bool:
 
 def output_path(settings: Settings, now: datetime | None = None) -> Path:
     timestamp = (now or datetime.now(timezone.utc)).strftime(
-        "%Y-%m-%d_%H-%M-%S"
+        "%Y-%m-%d_%H-%M-%S_%f"
     )
     return (
         settings.raw_scan
         / f"{timestamp}_ES-60W.{settings.output_format}"
     )
+
+
+def partial_output_path(final_path: Path) -> Path:
+    """Return the non-published sibling used while a scan is being written."""
+    return final_path.with_name(f".{final_path.name}.part")
+
+
+def fsync_directory(directory: Path) -> None:
+    """Persist a rename in *directory* before reporting the scan as complete."""
+    flags = os.O_RDONLY | getattr(os, "O_DIRECTORY", 0)
+    descriptor = os.open(directory, flags)
+    try:
+        os.fsync(descriptor)
+    finally:
+        os.close(descriptor)
 
 
 def scan_command(settings: Settings) -> list[str]:
@@ -299,7 +314,7 @@ def acquire_one_page(settings: Settings, event_source: str) -> None:
     scan_running = True
     started = time.monotonic()
     final_path = output_path(settings)
-    partial_path = final_path.with_suffix(final_path.suffix + ".partial")
+    partial_path = partial_output_path(final_path)
     command = scan_command(settings)
     try:
         settings.raw_scan.mkdir(parents=True, exist_ok=True)
@@ -327,14 +342,20 @@ def acquire_one_page(settings: Settings, event_source: str) -> None:
                     timeout=settings.scan_timeout_seconds,
                     check=False,
                 )
+                # A final extension is a publication signal to external
+                # consumers.  Do not publish it until scanimage has exited,
+                # its output is flushed, and the file contents are durable.
+                output.flush()
+                os.fsync(output.fileno())
             elapsed = time.monotonic() - started
             byte_count = partial_path.stat().st_size
             stderr = result.stderr.decode("utf-8", errors="replace").strip()
             if result.returncode == 0 and byte_count > 0:
                 os.replace(partial_path, final_path)
+                fsync_directory(settings.raw_scan)
                 LOGGER.info(
                     "scan_completed output=%s byte_count=%d elapsed_seconds=%.3f "
-                    "attempt=%d backend_warning=%r",
+                    "attempt=%d publication=atomic_rename backend_warning=%r",
                     final_path,
                     byte_count,
                     elapsed,

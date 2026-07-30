@@ -1,8 +1,10 @@
 import importlib.util
 import pathlib
 import sys
+import tempfile
 import unittest
 from datetime import datetime, timezone
+from unittest import mock
 
 
 MODULE_PATH = pathlib.Path(__file__).parents[1] / "src" / "es60w_listener.py"
@@ -60,8 +62,68 @@ class ListenerConfigurationTest(unittest.TestCase):
         path = LISTENER.output_path(settings, when)
         self.assertEqual(
             path,
-            pathlib.Path("/data/raw/2026-07-29_12-34-56_ES-60W.tiff"),
+            pathlib.Path(
+                "/data/raw/2026-07-29_12-34-56_000000_ES-60W.tiff"
+            ),
         )
+
+    def test_partial_output_is_hidden_and_never_has_final_extension(self) -> None:
+        final_path = pathlib.Path("/data/raw/document.png")
+        self.assertEqual(
+            LISTENER.partial_output_path(final_path),
+            pathlib.Path("/data/raw/.document.png.part"),
+        )
+
+    def test_successful_scan_is_fsynced_then_published_by_rename(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            output_directory = pathlib.Path(temporary_directory)
+            final_path = output_directory / "document.png"
+            settings = LISTENER.Settings.from_env(
+                {
+                    "RAW_SCAN": str(output_directory),
+                    "ES60W_SCAN_START_DELAY_SECONDS": "0",
+                    "ES60W_LOG_FILE": "",
+                }
+            )
+
+            def fake_scanimage(*_args: object, **kwargs: object) -> object:
+                output = kwargs["stdout"]
+                output.write(b"complete scan")  # type: ignore[union-attr]
+                return mock.Mock(returncode=0, stderr=b"")
+
+            real_replace = LISTENER.os.replace
+            real_fsync = LISTENER.os.fsync
+            events: list[str] = []
+
+            def checked_replace(source: object, destination: object) -> None:
+                self.assertEqual(source, output_directory / ".document.png.part")
+                self.assertEqual(destination, final_path)
+                self.assertFalse(final_path.exists())
+                events.append("replace")
+                real_replace(source, destination)
+
+            def recording_fsync(descriptor: int) -> None:
+                events.append("fsync")
+                real_fsync(descriptor)
+
+            LISTENER.reset_runtime_state()
+            with (
+                mock.patch.object(LISTENER, "output_path", return_value=final_path),
+                mock.patch.object(
+                    LISTENER.subprocess, "run", side_effect=fake_scanimage
+                ),
+                mock.patch.object(
+                    LISTENER.os, "replace", side_effect=checked_replace
+                ),
+                mock.patch.object(
+                    LISTENER.os, "fsync", side_effect=recording_fsync
+                ),
+            ):
+                LISTENER.acquire_one_page(settings, "test")
+
+            self.assertEqual(final_path.read_bytes(), b"complete scan")
+            self.assertFalse((output_directory / ".document.png.part").exists())
+            self.assertEqual(events, ["fsync", "replace", "fsync"])
 
     def test_scan_command_uses_settings(self) -> None:
         settings = LISTENER.Settings.from_env(

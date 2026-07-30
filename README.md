@@ -1,136 +1,99 @@
-# Epson ES-60W headless physical-button lab
+# Scanner inbox
 
-This repository records experiments toward one narrow acceptance gate:
+Put a page in an Epson ES-60W and press its physical Start/Send button. This
+service puts the raw scan in a local directory.
 
-> Power on the Epson ES-60W, insert one sheet, press the scanner's physical
-> Start/Send button once, and receive exactly one local scan file without any
-> other interaction.
+That is the whole job. It does not OCR, rename documents by their contents,
+upload anything, or run a document-management system. Those are good jobs for
+other tools; this one is the dependable boundary between the scanner and the
+rest of your setup.
 
-Scanner:
+## What arrives
 
-- Model: Epson ES-60W
-- IPv4: `192.168.6.134`
-- mDNS host: `EPSON524CB2.local`
-- MAC: `5c:f3:70:52:4c:b2`
-- Observed service: `_scanner._tcp.local` on TCP port `1865`
-
-VM:
-
-- IPv4: `192.168.6.180/21`
-- Gateway: `192.168.1.1`
-- OS: Ubuntu 24.04
-
-## Layout
-
-- `findings.md`: evidence, interpretations, and open questions
-- `commands.md`: reproducible command log
-- `captures/`: packet captures and capture-side metadata
-- `logs/`: raw tool and daemon logs
-- `output/`: acquired scan files
-- `packages/`: authoritative vendor downloads
-- `config/`: scanner/backend configuration
-- `src/`: proof receiver source
-- `tests/`: test evidence
-
-No claim that an mDNS announcement represents a button press will be made
-without comparing it with no-button controls.
-
-## Current proof status
-
-- Manual Linux Wi-Fi acquisition works through stock SANE device
-  `epsonds:net:192.168.6.134`.
-- The physical button emits a repeatable Epson `NetScanMonitor-agent`
-  multicast transaction on UDP 2968.
-- Both the original unprivileged systemd listener and its Docker replacement
-  have converted physical button presses into valid local PNG files.
-- The formal 10-scan, 3-cycle, daemon-restart, rapid-repeat, and VM-reboot
-  reliability gate passed on 2026-07-29.
-- The Docker deployment passed physical scans before and after a Docker daemon
-  restart, then auto-started and scanned successfully after a full VM reboot.
-- See `tests/acceptance-report.md` for exact transactions and evidence.
-
-## Service operations
-
-```sh
-sudo docker compose --env-file config/compose.env.lab ps
-sudo docker compose --env-file config/compose.env.lab logs -f
-```
-
-Files arrive as:
+By default, each completed scan is a PNG in `RAW_SCAN`:
 
 ```text
-/opt/es60w-lab/output/YYYY-MM-DD_HH-MM-SS_ES-60W.png
+2026-07-30_14-05-09_123456_ES-60W.png
 ```
 
-## Runtime configuration
+The receiver talks to the scanner through the standard SANE `epsonds` backend.
+It listens for the scanner's physical-button multicast event and then acquires
+one page. The tested scanner is an Epson ES-60W; settings are available for
+the scanner address, resolution, source, mode, and output format.
 
-The receiver reads configuration from environment variables. The important
-portable settings are:
+## A file appearing means it is complete
 
-| Variable | Default | Purpose |
-|---|---|---|
-| `RAW_SCAN` | `/opt/es60w-lab/output` | Writable destination for completed scans |
-| `ES60W_SCANNER_IP` | `192.168.6.134` | Scanner IPv4 address |
-| `ES60W_LOCAL_IP` | `0.0.0.0` | Local interface address used to join the multicast group |
-| `ES60W_SANE_DEVICE` | derived from scanner IP | SANE device passed to `scanimage` |
-| `ES60W_LOG_FILE` | lab log path | File log; set empty for stdout/journald only |
-| `ES60W_LOG_LEVEL` | `INFO` | Python log level |
+`RAW_SCAN` is a small filesystem handoff protocol, not just an output folder.
+The listener never writes a visible final filename. For a PNG named
+`document.png`, it does this in the same directory:
 
-`config/es60w-listener.env.example` contains every supported setting and
-container-oriented defaults. `config/es60w-listener.env.systemd` is the
-concrete configuration proven on this VM and is installed at
-`/etc/default/es60w-listener`.
+```text
+.document.png.part  write scan output
+                    flush and fsync file
+document.png         atomic rename, then fsync directory
+```
 
-After changing the systemd environment:
+So a consumer that considers only `*.png` will never open a file while this
+service is still writing it. Watch for a move into the directory (`IN_MOVED_TO`
+on Linux) rather than a create or modify event. Ignore dotfiles and `*.part`.
+
+The temporary and final names must be in the same filesystem. Keep `RAW_SCAN`
+as one ordinary writable directory (the Docker bind mount already does this).
+The directory `fsync` makes the rename durable across a crash on filesystems
+that support it; it does not turn a network filesystem with weak cache
+semantics into a transactional queue.
+
+Downstream software is deliberately outside this project. If you add OCR,
+Paperless, or reporting later, let each stage use the same rule: claim a
+published input by atomic rename, write its own hidden temporary output,
+validate it, then atomically publish its next artefact. Do not use "unchanged
+for N seconds" as the correctness check.
+
+## Run it with Docker
+
+Copy the example Compose environment file and set the scanner and host output
+directory:
 
 ```sh
-sudo systemctl restart es60w-listener
-journalctl -u es60w-listener -n 30 --no-pager
+cp config/compose.env.example config/compose.env
+# edit config/compose.env
+sudo docker compose --env-file config/compose.env build
+sudo docker compose --env-file config/compose.env up -d
+sudo docker compose --env-file config/compose.env logs -f
 ```
 
-The checked-in systemd sandbox permits writes only under the current lab
-`output/` and `logs/` directories. If `RAW_SCAN` is moved elsewhere in the
-host deployment, add that absolute directory to `ReadWritePaths` in the unit.
+`RAW_SCAN_HOST` is the directory on the host where completed scans appear.
+Ensure it is writable by `PUID:PGID`. The container uses host networking so it
+can receive the scanner's multicast event and connect back to the scanner.
 
-## Docker deployment
+Do not run the container and the native systemd service at the same time:
+both will hear one button press and both may scan the page.
 
-The image contains Ubuntu 24.04's stock `scanimage`, SANE `epsonds` backend,
-Python runtime, and the listener. The build context admits only the Dockerfile
-and listener source; acquired scans, packet captures, logs, packages, and Git
-metadata are excluded by `.dockerignore`.
+## Configuration
 
-The Compose service uses Linux host networking because it must:
+The portable defaults live in
+[`config/es60w-listener.env.example`](config/es60w-listener.env.example).
+The settings most people change are:
 
-- receive UDP multicast `239.255.255.253:2968`; and
-- connect to scanner TCP `192.168.6.134:1865`.
+| Variable | Purpose |
+|---|---|
+| `RAW_SCAN` | Writable directory for completed raw scans |
+| `ES60W_SCANNER_IP` | Scanner IPv4 address |
+| `ES60W_LOCAL_IP` | Interface address for joining multicast (`0.0.0.0` usually works) |
+| `ES60W_RESOLUTION` | Scan resolution; default `300` |
+| `ES60W_SCAN_SOURCE` | Scanner source; default `ADF Front` |
+| `ES60W_SCAN_MODE` | Colour mode; default `Color` |
+| `ES60W_OUTPUT_FORMAT` | `png`, `jpeg`, `pnm`, or `tiff`; default `png` |
 
-It runs unprivileged, drops every Linux capability, enables
-`no-new-privileges`, uses a read-only root filesystem, and writes only through
-the `RAW_SCAN` bind mount.
+For a native systemd deployment, use
+[`config/es60w-listener.service`](config/es60w-listener.service) with its
+environment file. If you change `RAW_SCAN`, add that absolute directory to
+`ReadWritePaths` in the unit as well.
 
-For this VM:
+## Notes and evidence
 
-```sh
-sudo docker compose --env-file config/compose.env.lab build
-sudo systemctl stop es60w-listener.service
-sudo docker compose --env-file config/compose.env.lab up -d
-
-sudo docker compose --env-file config/compose.env.lab ps
-sudo docker compose --env-file config/compose.env.lab logs -f
-```
-
-For another host, copy `config/compose.env.example`, set `RAW_SCAN_HOST`,
-`ES60W_SCANNER_IP`, `ES60W_LOCAL_IP`, `PUID`, and `PGID`, then pass the copied
-file through Compose's `--env-file` option.
-
-Never run the native systemd listener and container listener together. Both
-would receive the same physical-button transaction and could race to acquire
-the page.
-
-The native unit remains installed as a rollback path but is disabled. To roll
-back safely:
-
-```sh
-sudo docker compose --env-file config/compose.env.lab down
-sudo systemctl enable --now es60w-listener.service
-```
+This repository also retains the working notes and test evidence that got the
+physical button working: `findings.md`, `commands.md`, `captures/`, `logs/`,
+and `tests/`. They are useful when changing scanner behaviour, but they are not
+required reading to use the inbox. The current acceptance record is in
+[`tests/acceptance-report.md`](tests/acceptance-report.md).
