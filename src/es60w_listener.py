@@ -289,6 +289,18 @@ def fsync_directory(directory: Path) -> None:
         os.close(descriptor)
 
 
+def remove_partial(partial_path: Path) -> None:
+    """Best-effort cleanup that must never hide the original scan error."""
+    try:
+        partial_path.unlink(missing_ok=True)
+    except OSError as error:
+        LOGGER.warning(
+            "failure=partial_cleanup output=%s detail=%r",
+            partial_path,
+            error,
+        )
+
+
 def scan_command(settings: Settings) -> list[str]:
     return [
         settings.scanimage_binary,
@@ -328,7 +340,7 @@ def acquire_one_page(settings: Settings, event_source: str) -> None:
         )
         time.sleep(settings.scan_start_delay_seconds)
         for attempt in range(1, settings.max_zero_byte_attempts + 1):
-            partial_path.unlink(missing_ok=True)
+            remove_partial(partial_path)
             LOGGER.info(
                 "scan_started event_source=%s device=%s output=%s attempt=%d",
                 event_source,
@@ -371,7 +383,7 @@ def acquire_one_page(settings: Settings, event_source: str) -> None:
                 byte_count == 0
                 and attempt < settings.max_zero_byte_attempts
             ):
-                partial_path.unlink(missing_ok=True)
+                remove_partial(partial_path)
                 LOGGER.warning(
                     "failure=transient_zero_byte_scan returncode=%d "
                     "attempt=%d "
@@ -395,10 +407,10 @@ def acquire_one_page(settings: Settings, event_source: str) -> None:
                 elapsed,
                 stderr,
             )
-            partial_path.unlink(missing_ok=True)
+            remove_partial(partial_path)
             return
     except subprocess.TimeoutExpired as error:
-        partial_path.unlink(missing_ok=True)
+        remove_partial(partial_path)
         LOGGER.error(
             "failure=scan_timeout elapsed_seconds=%.3f "
             "retry_reason=next_button_event "
@@ -407,7 +419,7 @@ def acquire_one_page(settings: Settings, event_source: str) -> None:
             error,
         )
     except OSError as error:
-        partial_path.unlink(missing_ok=True)
+        remove_partial(partial_path)
         LOGGER.exception(
             "failure=scan_os_error elapsed_seconds=%.3f "
             "retry_reason=next_button_event "

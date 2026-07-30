@@ -76,6 +76,15 @@ class ListenerConfigurationTest(unittest.TestCase):
             pathlib.Path("/data/raw/.document.png.part"),
         )
 
+    def test_partial_cleanup_does_not_hide_a_scan_error(self) -> None:
+        partial_path = pathlib.Path("/data/raw/.document.png.part")
+        with mock.patch.object(
+            pathlib.Path,
+            "unlink",
+            side_effect=PermissionError(13, "Permission denied"),
+        ):
+            LISTENER.remove_partial(partial_path)
+
     def test_successful_scan_is_fsynced_then_published_by_rename(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
             output_directory = pathlib.Path(temporary_directory)
