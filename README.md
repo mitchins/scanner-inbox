@@ -90,6 +90,17 @@ For a native systemd deployment, use
 environment file. If you change `RAW_SCAN`, add that absolute directory to
 `ReadWritePaths` in the unit as well.
 
+## FAQ
+
+### The scanner is unreliable or file transfer times out
+
+Make sure this listener is the only software trying to connect to the scanner.
+Another running listener, a research/test worker, or Epson's desktop suite can
+contend for the scanner's SANE connection. The result can look like a scanner
+or network failure: button events still arrive, but acquisition fails with a
+device I/O error or a timed-out transfer. Stop the competing software, then
+retry with one sheet.
+
 ## Notes and evidence
 
 This repository also retains the working notes and test evidence that got the
